@@ -1,0 +1,156 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+
+/*==========================================*/
+/* Navigation Menu bar */
+/*==========================================*/
+/* general format and properties of the navbar
+    (background, size, position) */
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+
+    background-color: rgba(255, 255, 255, 0.9);
+}
+
+#burger {
+    /*the 3 span menu is not shown on full screen*/
+    display: none;
+}
+
+#menu {
+    /*This is the normal menu bar*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    width: 100%;
+}
+
+/* position of the search bar */
+#search_bar  {
+    margin : 10px 6px;
+    border-radius: 20px;
+
+    display: flex;
+    flex-direction: row;
+
+    background-color: #f2f2f2;
+    padding: 1%;
+}
+#search {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 3px;
+    margin-left: 6px;
+    width: 70%;
+}
+
+#submit_search_bar{
+    display: inline-flex;
+    padding: 2px 5px;
+    border-radius: 10px;
+    background: #ddd;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+#submit_search_bar :focus,
+#submit_search_bar:hover {
+    background: rgba(0, 0, 0, .15);
+}
+
+
+/* properties of the list form the navbar */
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+
+    list-style-type: none;
+}
+
+nav ul a {
+    display: block;
+
+    padding: 1em 2em;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+
+    color: rgb(0, 0, 0);
+    transition: all .3s ease-in-out;
+}
+
+nav ul a:focus,
+nav ul a:hover {
+    background: rgba(0, 0, 0, .15);
+}
+
+
+/*Now the menu bar has a 2 way menu
+On hover of "posts" displays the 2 links of archives and new post*/
+li>ul {
+    display: none
+}
+
+li:hover ul {
+    display: block;
+    position: absolute;
+    background: rgba(0, 0, 0, .20);
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: 0;
+}
+
+li:hover ul li a:link {
+    display: block;
+    margin-left: 0px;
+}
+
+
+/* if the screen gets too small, displays a 3 span menu to have easier access */
+@media screen and (max-width:768px) {
+
+    nav {
+        height: 54px;
+    }
+
+    #burger {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 30px;
+        width: 30px;
+        margin-top: 12px;
+        margin-right: 2.5%;
+        position: absolute;
+        right: 0;
+        cursor: pointer;
+    }
+
+    #burger span {
+        height: 3px;
+        width: 100%;
+        background-color: rgb(119, 63, 209);
+    }
+
+    #menu {
+        display: none;
+
+        position: absolute;
+        background-color: rgba(255, 255, 255, 0.9);
+        right: 0;
+        margin-top: 54px;
+    }
+
+    nav ul {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        list-style-type: none;
+    }
+}
