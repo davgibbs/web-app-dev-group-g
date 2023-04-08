@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<title>Admin</title>
+
+<head>
+  <!-- Loads the icons used in the navigation bar and footer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--  Loads the css file -->
+  <link rel="stylesheet" href="/css/admin_styles.css">
+  <!--  jquery -->
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+</head>
+
+<body style="background-color:lightblue;">
+<div class="topnav">
+  <a href="/admin"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a class="active" href="/admin">Admin</a>
+  <a href="/admin">Logout</a>
+</div>
+<center>
+  <br>
+  <h1>Admin View</h1>
+  <h2>Click a row to edit</h2>
+  <br>
+  <div>
+    <table id="example">
+      <tr>
+        <th>ISBN</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Date</th>
+        <th>Available?</th>
+      </tr>
+    </table>
+  </div>
+  <script>
+    $(document).ready(function () {
+
+      $('#example tr').click(function () {
+        var href = $(this).find("a").attr("href");
+        if (href) {
+          window.location = href;
+        }
+      });
+
+    });
+  </script>
+  <br>
+  <a href="/admin_newbook" class="button">Add Book</a>
+  <script src="javascript/book_display.js"></script>
+</center>
+</body>
+
+</html>
