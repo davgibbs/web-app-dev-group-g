@@ -1,0 +1,84 @@
+body{
+    background-color: #E1E0D5
+}
+
+/*==========================================*/
+            /* title */
+/*==========================================*/
+body>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    height: 10vh;
+    background-color: lightgrey;
+
+}
+
+body>div h1 {
+    display: flex; 
+    align-self: center;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+    text-decoration: none;
+
+    color: black;
+}
+
+/*==========================================*/
+            /* main */
+/*==========================================*/
+main {
+    padding: calc(6%) 12% 6% 12%;
+}
+
+.container {
+    border: 3px solid #f1f1f1;
+    width: 80%;
+    margin-left: 10%;
+    background-color: white;
+}
+
+main>div img {
+    border-radius: 50%;
+    width: 60px;
+    float: left;
+    margin-left: 10px;
+    margin-top: 6px;
+}
+
+.image {
+    flex-basis: 20%
+}
+
+.uname_c {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    padding-left: 14px;
+    display: flex;
+    background-color: white;
+}
+
+.text {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    display: flex; 
+    flex-direction: column;
+    margin-bottom: 10px;
+    
+}
+
+
+.list{
+    flex-direction: column;
+    list-style: none;
+    
+}
+
+.list > li{
+    margin: 4px;
+}
+
+

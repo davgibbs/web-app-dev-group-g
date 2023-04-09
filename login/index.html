@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="./styles/login.css">
+
+    <title>Login</title>
+</head>
+
+<body>
+    <nav id="nav">
+        <ul>
+            <li><a class="button" href="./index.html">login</a></li>
+            <li><a class="button" href="./account.html">account</a>
+        </ul>
+    </nav>
+    <div id="form_container">
+        <div id="login_form">
+            <form name="login" id="login" action="" method="post">
+                <h1>Login</h1>
+
+                <div class="imgcontainer">
+                    <img src="images/blank-profile-pic.webp" alt="Avatar" class="avatar">
+                </div>
+
+                <div class="container">
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" id="uname_login">
+                    <p id="uname_p">*Your username must be 3-20 characters long</p>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw_login">
+                    <p>*Must be between 6 to 20 characters with at least one numeric digit, one uppercase and one
+                        lowercase
+                        letter</p>
+
+                    <button type="submit" id="submit_login">Login</button>
+                </div>
+            </form>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <p>If you don't have an account yet please sign up</p>
+                <button type="" id="signup_btn">Sign up</button>
+            </div>
+        </div>
+    </div>
+
+
+    <div id="form_container">
+        <!-- <form action="home.html" method="post"> -->
+        <div id="signup_form">
+            <form name="signup" id="signup" action="" method="post">
+                <h1>Sign up</h1>
+
+                <div class="container">
+                    <label for="Name"><b>Name</b></label>
+                    <input type="text" placeholder="Enter your name" name="name" id="name">
+                    <p id="name_p"></p>
+
+                    <label for="surname"><b>Surname</b></label>
+                    <input type="text" placeholder="Enter Surname" name="surname" id="surname">
+                    <p id="surname_p"></p>
+
+                    <label for="uname"><b>Username</b></label>
+                    <input type="text" placeholder="Enter Username" name="uname" id="uname_signup">
+                    <p id="uname_p">*Your username must be 3-20 characters long</p>
+
+                    <label for="email"><b>Email</b></label>
+                    <input type="text" placeholder="example@mail.dcu.ie" name="email" id="email">
+                    <p id="email_p"></p>
+
+                    <label for="psw"><b>Password</b></label>
+                    <input type="password" placeholder="Enter Password" name="psw" id="psw_signup">
+                    <p>*Your password must be between 6 to 20 characters with at least one numeric digit, one uppercase
+                        and one lowercase letter</p>
+
+                    <button type="submit" id="submit_signup">Sign up</button>
+                </div>
+            </form>
+
+            <div class="container" style="background-color:#f1f1f1">
+                <p>If you already have an account please sign in</p>
+                <button type="" id="signin_btn">Sign in</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="scripts/login.js"></script>
+
+</html>
