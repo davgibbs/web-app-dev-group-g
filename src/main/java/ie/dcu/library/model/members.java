@@ -1,4 +1,4 @@
-package com.G_Database.G_Database;
+package ie.dcu.library.model;
 
 //Contains boilerplate code for members class - D.Mullen EE417_Group_Project
 

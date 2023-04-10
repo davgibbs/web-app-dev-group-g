@@ -1,7 +1,5 @@
-package com.G_Database.G_Database;
+package ie.dcu.library.controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;

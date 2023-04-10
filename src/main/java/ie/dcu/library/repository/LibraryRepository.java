@@ -1,12 +1,14 @@
 //Crud Repository interface for obtaining books from database - includes methods for finding by id, returning all books and delete by id
 
-package com.G_Database.G_Database;
+package ie.dcu.library.repository;
 
 import java.util.List;
 
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
+
+import ie.dcu.library.model.books;
 
 @Repository
 

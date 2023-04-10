@@ -1,6 +1,6 @@
 //RestController for Library interface - includes endpoints for books, members, library records and login tables D.Mullen Group G 20/03/2023
 
-package com.G_Database.G_Database;
+package ie.dcu.library.controller;
 
 
 import java.util.ArrayList;
@@ -19,6 +19,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
+
+import ie.dcu.library.entity.login;
+import ie.dcu.library.model.books;
+import ie.dcu.library.model.library_records;
+import ie.dcu.library.model.members;
+import ie.dcu.library.repository.LibraryRepository;
+import ie.dcu.library.repository.LoginRepository;
+import ie.dcu.library.repository.MembersRepository;
+import ie.dcu.library.repository.RecordsRepository;
 
 @RestController
 @RequestMapping(path="/library") // URL format is http://localhost:8080/library/

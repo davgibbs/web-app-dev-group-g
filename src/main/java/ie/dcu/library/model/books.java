@@ -1,6 +1,6 @@
 //Contains boilerplate code for books class - D.Mullen EE417_Group_Project
 
-package com.G_Database.G_Database;
+package ie.dcu.library.model;
 
 import java.util.Date;
 

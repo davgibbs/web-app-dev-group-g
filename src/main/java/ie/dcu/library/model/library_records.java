@@ -1,5 +1,5 @@
 //Contains boilerplate code for library_records class - D.Mullen EE417_Group_Project
-package com.G_Database.G_Database;
+package ie.dcu.library.model;
 	
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
