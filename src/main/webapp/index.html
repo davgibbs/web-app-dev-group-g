@@ -1,0 +1,157 @@
+ <!DOCTYPE html>
+<html>
+<title>Library</title>
+<head>
+<!-- Loads the icons used in the navigation bar and footer -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<!--  Loads the css file -->
+<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body style="background-color:#E1E0D5">
+	<div class="topnav">
+		<a href="./index.html"><img src="images/logo.png" alt="Library Logo" height="60"></a>
+  		<a class="active" href="index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  		<a href="Books.html">Books</a>
+  		<a href="SignUp.html">Sign-Up</a>
+  		<a href="Login.html">Login</a>
+
+		<div class="search-container">
+      		<form onsubmit="searchEngine()">
+        		<!-- Dropdown menu where the user selects what the reason they wish to contact us is -->
+        		<!-- This is to make it easier for the company when reading the message-->
+        		<select id="reason" name="reason">
+          			<option value="Title">Title</option>
+          			<option value="Author">Author</option>
+        		</select>
+        		<input type="text" placeholder="Search.." name="search" style="margin-left:0px">
+        		<button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
+      		</form>
+    	</div>
+	</div>
+
+	<!-- The following code is an image gallery of bookCovers articles it displays title, cover image and date of publish. 
+     When the image is clicked it brings the user to the bookCovers article, i.e. RTE website -->
+	<!-- The majority of sports websites online have a bookCovers section on their article I wanted to make it as realistic as possible. 
+     I choose bookCovers articles I found most interesting  -->
+ <div class="search-content">
+	<div class="bookCovers-responsive">
+		<div class="bookCovers">
+    		<a target="_self" href="ATaleOfTwoCities.html">
+      			<img src="images/aTaleOfTwoCities.jpg">
+    		</a>
+    		<div class="bookCovers-title">Charles Dickens<BR><BR><b>A Tale of Two Cities</b><p></p></div>
+  		</div>
+	</div>
+	
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="DaVinchiCode.html">
+      			<img src="images/daVinchiCode.jpg">
+    		</a>
+    		<div class="bookCovers-title">Dan Brown<BR><BR><b>The Davinci Code</b><p></p></div>
+  		</div>
+	</div>
+
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="Dubliners.html">
+      			<img src="images/dubliners.jpg">
+    		</a>
+    		<div class="bookCovers-title">James Joyce<BR><BR><b>Dubliners</b><p></p></div>
+  		</div>
+	</div>
+
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="RedRabbit.html">
+      			<img src="images/redRabbit.jpg">
+    		</a>
+    		<div class="bookCovers-title">Tom Clancy<BR><BR><b>Red Rabbit</b><p></p></div>
+  		</div>
+	</div>
+
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="TheFirm.html">
+      			<img src="images/theFirm.jpg">
+    		</a>
+    		<div class="bookCovers-title">John Grisham<BR><BR><b>The Firm</b><p></p></div>
+  		</div>
+	</div>
+
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="TheGreatGatsby.html">
+      			<img src="images/theGreatGatsby.jpg">
+    		</a>
+    		<div class="bookCovers-title">F.Scott Fitzgerald<BR><BR><b>The Great Gatsby</b><p></p></div>
+  		</div>
+	</div>
+
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="TheShining.html">
+      			<img src="images/theShining.jpg">
+    		</a>
+    	 	<div class="bookCovers-title">Stephen King<BR><BR><b>The Shining</b><p></p></div>
+  		</div>
+	</div> 
+
+	<div class="bookCovers-responsive">
+  		<div class="bookCovers">
+    		<a target="_self" href="TheTimeMachine.html">
+      			<img src="images/theTimeMachine.jpg">
+    		</a>
+    	 	<div class="bookCovers-title">H.G Wells<BR><BR><b>The Time machine</b><p></p></div>
+  		</div>
+	</div> 
+
+	<div class="bookCovers-clrfix"></div>
+</div>
+
+</body>
+
+<!-- This is the footer which is on each page it has important infomation and what I as a Hurling fan imagine the most looked for information -->
+<!-- This is done for easy access to the information-->
+<footer>
+  <div class="footer-content">
+    <div class="footer-row">
+      <div class="footer-column" style="margin-right:10px">
+        <!-- Contact information, incase anyone needs to get in contact -->
+        <p style="font-size:18px"><b>CONTACT INFO:</b></p>
+        <p style="margin-top:-5px">Email: isobel.fox4@mail.dcu.ie</p>
+         <p style="margin-top:-5px">Tel: +353 8 7123456</p>
+      </div>
+      <div class="footer-column" style="margin-left:10px">
+        <!-- Links to the buy season ticket, and league/championship tickets websites -->
+        <p style="font-size:18px; margin-bottom:20px"><b>ACCOUNT:</b></p>
+        <p style="margin-top:-5px">
+        	<a href="SignUp.html">Register account</a>
+        </p>
+        <p style="margin-top:-5px">
+        	<a href="Login.html">Login</a>
+        </p>
+      </div>
+      <div class="footer-column" style="margin-left:10px">
+        <!-- Links to the buy season ticket, and league/championship tickets websites -->
+        <p style="font-size:18px; margin-bottom:20px"><b>DISCOVER:</b></p>
+        <p style="margin-top:-5px">		
+        	<a href="index.html">Home</a>
+        </p>
+        <p style="margin-top:-5px">		
+        	<a href="Books.html">Books</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- draws a line -->
+  <hr class="line" style="margin-bottom:20px">
+  <!-- On bottom on the left and right has signature and copywrite-->
+  <p style="text-align:center;"><i class="fa fa-copyright"></i>
+    2023 Library books IE <br>
+  </p>
+</footer>
+</html>
+

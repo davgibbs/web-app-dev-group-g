@@ -1,0 +1,424 @@
+/* The CSS file deals with the aesthtics of the project */
+/* Removes the margin and sets the font type for all body aspects */
+/*body {
+  margin: 0;
+  font-family: Calibri, sans-serif;
+  min-height: 100vh;
+}*/
+/*html, body {
+  height: 100%;
+}*/
+
+body {
+  margin: 0;
+  font-family: Calibri, sans-serif;
+/*  display: flex;
+  flex-direction: column;*/
+}
+/*
+main {
+  flex-grow: 1;
+}
+*/
+* {
+  box-sizing: border-box;
+}
+
+/* The navigation bar set up*/
+/* The overflow is clipped to hide the rest of the content */
+/* The background colour is set*/
+/* The buttons are centered on the page */
+.topnav {
+  overflow: hidden;
+  background-color: #A7A297;
+}
+
+/* The topnav hyperlinks are floating to the left */
+/* The text colour is set and padding is added*/
+/* The underline is removed */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The topnav hyperlink background colour and the text colour changes when the mouse is hovering on it */
+.topnav a:hover {
+  background-color: #FDFDFD;
+  color: #A7A297;
+}
+
+/* The topnav hyperlink background colour and the text colour changes when active */
+.topnav a.active {
+  background-color: #77746E;
+  color: white;
+}
+
+/* The dropdown hyperlink background colour and the text colour changes when the mouse is hovering on it or active*/
+.topnav a:hover, .dropdown:hover .dropbtn {
+  background-color: #FDFDFD;
+  color: #A7A297;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text]{
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav select {
+  padding: 6px;
+  padding-top:8px;
+  padding-right:0px;
+  margin-right:-4px;
+  margin-top: 8px;
+  color: #676561;
+  background: #D3CFC6;
+  font-size: 14px;
+  border: none;
+}
+
+ .topnav select:hover {
+    background: #C8C2B6;
+  }
+
+.topnav .search-container a {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  color:black;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container a:hover {
+  background: #ccc;
+}
+
+/*@media screen and (max-width: 600px) {
+  .topnav .search-container {
+    float: none;
+  }*/
+/*  .topnav a, .topnav input[type=text], select, .topnav .search-container a {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }*/
+/*  .topnav input[type=text], select {
+    border: 1px solid #ccc;  
+  }*/
+/*}*/
+
+/* The login content deals with the column on the left that holds the login form details */
+/* The border radius is set to cruve the outside edges of the content */
+/* Margin is added all around to achieve the gap around content bar on the right hand side*/
+/* A shadow is added on the edges of the content for aesthetics */
+/* The background colour is set to achieve the desire effect */
+.login-content {
+  padding: 16px;
+  margin-top:20px;
+  background-color: white;
+  border-radius:12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+/* This deals with the input fields to the login inputs and the login password */
+/* The width and padding is set to get the desired size of inputs */
+/* the border edge is curved and a grey border is added for aesthetics */
+/* The inputs were set to be added below eachother inline with one another */
+.login-content input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: solid 1px grey;
+  border-radius:6px;
+  background: none;
+  box-sizing: border-box;
+}
+
+/* When the mouse focuses on the elements the background colour changes and the default blue border is removed*/
+.login-content input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+/* The heading for the login content font size is increased so it is much bigger than the  rest of the text */
+/* The margin on the left is removed so the text is inline with the inputs */
+.login-content h1{
+  margin-left:0px;
+  font-size:35px;
+}
+
+/* The margin on the left is removed on th etext below the login heading so the text is inline with the inputs */
+.login-content p{
+  margin-left:0px;
+}
+
+/* This creates a grey divider line whihc is set under the login title */
+/* A margin is added to the top and the bottom so there is a gap between elements above and below */
+/* The margin on th eright and the are removed so th eline goes all the way across */
+.login-content hr{
+  margin:20px;
+  margin-left:0px;
+  margin-right:0px;
+  border: 1px solid #f1f1f1
+}
+
+/* This is the style for the login submit buttons */
+/* The background colour and colour is set to match the aesthetic of the page */
+/* Padding and width were set to achieve the desired size of the button */
+/* Margins were added to add the desired gaps around the button */
+/* When the users mouse goes over the button the cursor changes to pointer */
+/* The edges of the button are curved and the border is removed done for aesthetics */
+.login-button {
+  background-color: #7a69d8;
+  color: white;
+  padding: 16px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius:8px;
+}
+
+/* When the mouse hovers over the submit button on the form pages, the opacity of the button decreases making the button appear lighter*/
+.login-button:hover {
+  opacity: 0.8;
+}
+
+/* Adds a purple login-text color to links to fit in with the aesthetic */
+.login-content a {
+  color: #7a69d8;
+}
+
+/* Set a grey background color and center the login-text of the "sign in" section */
+.login {
+  background-color: #f1f1f1;
+  login-text-align: center;
+}
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 55.5%;
+  padding: 10px;
+  margin:0px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.search-content{
+  padding: 16px;
+  margin:5%;
+  background-color: white;
+  border-radius:12px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.search-content input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 17px;
+  width: 60%;
+  border: solid 1px #BDBDBD;
+  border-radius:5px;
+}
+
+.search-content button {
+  padding: 6px 10px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border: solid 1px #BDBDBD;
+  color:white;
+  width:90%; 
+  margin-right:5%; 
+  margin-left:5%;
+  border-radius:5px;
+}
+
+.search-content button:hover {
+  background: #ccc;
+}
+
+.searchTypeBar a{
+  text-align: left;
+  padding: 6px 16px;
+  color: #8E8E8E;
+  text-decoration: none;
+}
+
+.searchTypeBar a:hover, .searchTypeBar a.active{
+  border-bottom: solid 3px #BA676A;
+}
+
+.searchButton{
+  margin-right:10px; 
+  margin-left:-4px; 
+  padding:6px; 
+  font-size:17px; 
+  border:none; 
+  background:#ddd;
+}
+
+.searchButton:hover{
+  background:#ccc;
+}
+
+/* All bookCovers related CSS */
+/* Sets the colour for the rectangle around the image */
+.bookCovers {
+  background-color: #F1F1F1;
+}
+/* changes the background colour around the image when the mouse hovers over it  */
+.bookCovers:hover {
+  background-color: #D5D5D5;
+}
+
+/*Sets the images size*/
+.bookCovers img {
+  width: 100%;
+  height: auto;
+}
+
+/* sets the padding, and center aligns the text on the rectangle around the image */
+.bookCovers-title {
+  padding: 5px;
+  text-align: center;
+}
+
+/* Create four equal columns of images that floats next to each other */
+.bookCovers-responsive {
+  padding: 10px 10px;
+  float: left;
+  width: 24.99999%;
+}
+
+/* Responsive layout - depending on window size makes the four columns to two instead */
+@media only screen and (max-width: 700px) {
+  .bookCovers-responsive {
+    width: 49.99999%;
+    margin: 6px 6px;
+  }
+}
+
+/* Responsive layout - depending on window size makes the two columns stack on top of each other instead of next to each other */
+@media only screen and (max-width: 500px) {
+  .bookCovers-responsive {
+    width: 100%;
+  }
+}
+
+/* After the column this clears the floats */
+.bookCovers-clrfix:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Sets up the tables in the fixtures/results page */
+/* Center aligns the text, remove the double border and sets the width */
+.searchTable{
+  margin-top:20px;
+  margin-bottom:10px;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  background-color:#F0F0F0;
+}
+
+/* Sets the table row details for the fixtures/results */
+/* Sets the height of the rows, centre aligns the text, and adds a border on the bottom */
+.searchTable tr {
+  height:50px;
+  text-align: center;
+  border-bottom: 2px solid white;
+}
+
+.backButton{
+  padding: 6px 17%;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border: solid 1px #BDBDBD;
+  text-decoration: none;
+  border-radius:5px;
+  color:white; 
+}
+
+.backButton:hover{
+  background-color:#;
+}
+
+/* Creates a divider line for the footer */
+hr.line {
+  margin: 20px;
+  margin-right:40px;
+  margin-left:40px;
+  border-top: 0.5px solid white;
+}
+
+/* Sets the the text that will be in the columns */
+/* Sets up the margins to match the copyright */
+.footer-content{
+ margin-left:68px;
+ margin-top:30px;
+}
+
+/* Sets the links to white as their normally purple and removes the underline */
+.footer-content a{
+ color:white;
+ text-decoration: none;
+}
+
+/* Creates 3 columns */
+.footer-column {
+  float: left;
+  width: 31%;
+  padding: 10px;
+}
+
+/* After the column this clears the floats */
+.footer-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Sets up the footer: */
+/* Sets the top margin so there is a gap between anything above the footer */
+/* Sets the footer all the way to the bottom of the page */
+/* Sets the background colour to the same colour as the logo header bar */
+footer {
+  margin-top: auto;
+/*  margin-top: 50px;*/
+  overflow: hidden;
+  background-color: #A7A297;  
+  color: white;
+  bottom: 0;
+  width: 100%;  
+}
