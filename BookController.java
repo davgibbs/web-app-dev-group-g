@@ -71,6 +71,11 @@ public class BookController {
   public ResponseEntity<List<books>> getBooksByAuthor(@RequestParam String author){
 	  return new ResponseEntity<List<books>>(bookRepository.findByAuthor(author), HttpStatus.OK);
   }
+  
+  @GetMapping(path="/gettitle")
+  public ResponseEntity<List<books>> getBooksByTitle(@RequestParam String title){
+	  return new ResponseEntity<List<books>>(bookRepository.findByTitle(title), HttpStatus.OK);
+  }
    
   //**********Mappings for the library_records Queries***********
   
