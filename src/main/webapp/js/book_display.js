@@ -17,7 +17,7 @@ function rowHandler(data){
     let row = table.insertRow();
 
     row.insertCell(0).innerHTML = data.isbn;
-    row.insertCell(1).innerHTML = `<a href="/admin_bookview.html?bookname=${data.title}" style="color: black; text-decoration: none;">${data.title}</a>`
+    row.insertCell(1).innerHTML = `<a href="/admin_bookview.html?bookisbn=${data.isbn}" style="color: black; text-decoration: none;">${data.title}</a>`
     row.insertCell(2).innerHTML = data.author;
     row.insertCell(3).innerHTML = data.date;
     row.insertCell(4).innerHTML = data.available;
