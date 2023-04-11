@@ -20,13 +20,12 @@
 
 <center>
   <br>
-  <h1 id="bookViewTitle">Book View</h1>
-  <script src="bookview_title.js"></script>
+  <h1 id="bookViewTitle"></h1>
 </center>
 <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
 
-    <form action="#" th:action="@{/admin}" th:object="${book}" method="POST">
+    <form>
 
       <div class="formbold-mb-3">
         <label for="isbn" class="formbold-form-label">
@@ -47,6 +46,12 @@
         <input type="text" name="author" id="author" class="formbold-form-input" />
       </div>
       <div class="formbold-mb-3">
+        <label for="date" class="formbold-form-label">
+          Date
+        </label>
+        <input type="date" name="date" id="date" class="formbold-form-input" />
+      </div>
+      <div class="formbold-mb-3">
         <label for="availability" class="formbold-form-label">
           Availability
         </label>
@@ -61,10 +66,11 @@
       <span class="buttonContainer">
         <a href="/admin.html" class="formbold-btn" style="color: white; text-decoration: none;">Back</a>
         <input class="formbold-btn" id="bookButton" type="submit" value="Submit" onclick="add_book.js">
-        <button class="formbold-btn">Delete</button>
+        <a href="/admin.html" class="formbold-btn" style="color: white; text-decoration: none;"onclick="deleteBook()">Delete</a>
       </span>
     </form>
   </div>
+  <script src="/js/bookview_functions.js"></script>
 </div>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
