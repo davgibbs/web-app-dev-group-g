@@ -6,16 +6,16 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import ie.dcu.library.entity.login;
+import ie.dcu.library.entity.Login;
 
 @Repository
 
 public interface LoginRepository
-  extends CrudRepository<login,
+  extends CrudRepository<Login,
                          Integer> {
 
-  login findById(int id);
-  List<login> findAll();
+  Login findById(int id);
+  List<Login> findAll();
   void deleteById(int id);
   
 }

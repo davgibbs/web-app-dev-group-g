@@ -7,7 +7,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 	@Entity // This tells Hibernate to make a table out of this class
-	public class library_records  {
+	public class Library_records  {
 	  @Id
 	  private Integer recordid;
 	  private Integer memberid;
@@ -18,11 +18,11 @@ import jakarta.persistence.Id;
 	  private Date due_date;
 	  private String overdue;
 	  
-	  public library_records() {
+	  public Library_records() {
 		  
 	  }
 	 
-	  public library_records(Integer recid, Integer membid, Integer isbn, Date borrowed_date, Date due_date, String overdue) {
+	  public Library_records(Integer recid, Integer membid, Integer isbn, Date borrowed_date, Date due_date, String overdue) {
 		  this.recordid = recid;
 		  this.memberid = membid;
 		  this.isbn = isbn;
