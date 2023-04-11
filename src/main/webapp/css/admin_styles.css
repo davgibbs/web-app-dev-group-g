@@ -44,7 +44,7 @@ table#example {
 /* navbar */
 .topnav {
     overflow: hidden;
-    background-color: #72b7cf;
+    background-color: #A7A297;
 }
 
 /* The topnav hyperlinks are floating to the left */
@@ -52,7 +52,7 @@ table#example {
 /* The underline is removed */
 .topnav a {
     float: left;
-    color: black;
+    color: #f2f2f2;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
@@ -61,23 +61,23 @@ table#example {
 /* The topnav hyperlink background colour and the text colour changes when the mouse is hovering on it */
 .topnav a:hover {
     background-color: #ddd;
-    color: #78A596;
+    color: #f2f2f2;
 }
 
 /* The topnav hyperlink background colour and the text colour changes when active */
 .topnav a.active {
-    background-color: #1c89ad;
-    color: black;
+    background-color: #77746E;
+    color: white;
 }
 
 /* The dropdown hyperlink background colour and the text colour changes when the mouse is hovering on it or active*/
 .topnav a:hover, .dropdown:hover .dropbtn {
-    background-color: #ddd;
-    color: #1c89ad;
+    background-color: #FDFDFD;
+    color: #A7A297;
 }
 
 .button {
-    background-color: #1c89ad;
+    background-color: #A7A297;
     border: none;
     color: black;
     padding: 15px 32px;
@@ -87,7 +87,7 @@ table#example {
 }
 
 .button:hover {
-    background-color: #72b7cf;
+    background-color: #77746E;
     color: black;
 }
 
