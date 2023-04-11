@@ -22,11 +22,11 @@
   <br>
   <h1>Add Book</h1>
 </center>
+<script src="/js/add_book.js"></script>
 <div class="formbold-main-wrapper">
   <div class="formbold-form-wrapper">
 
-    <form action="#" th:action="@{/admin}" th:object="${book}" method="POST">
-
+    <form>
       <div class="formbold-mb-3">
         <label for="isbn" class="formbold-form-label">
           ISBN
@@ -46,6 +46,12 @@
         <input type="text" name="author" id="author" class="formbold-form-input" />
       </div>
       <div class="formbold-mb-3">
+        <label for="date" class="formbold-form-label">
+          Date
+        </label>
+        <input type="date" name="date" id="date" class="formbold-form-input" />
+      </div>
+      <div class="formbold-mb-3">
         <label for="availability" class="formbold-form-label">
           Availability
         </label>
@@ -59,7 +65,7 @@
       </div>
       <span class="buttonContainer2">
         <a href="/admin.html" class="formbold-btn" style="color: white; text-decoration: none;">Back</a>
-        <input class="formbold-btn" id="bookButton" type="submit" value="Submit" onclick="add_book.js">
+        <input class="formbold-btn" id="bookButton" type="submit" value="Submit" onclick="doFetch()">
       </span>
     </form>
   </div>
