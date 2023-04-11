@@ -1,5 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
-
+/* css for admin forms */
 * {
     margin: 0;
     padding: 0;
@@ -59,7 +58,7 @@ body {
 
 .admin-form-input:focus {
     border-color: #A7A297;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
 }
 
 .admin-form-label {
@@ -93,7 +92,7 @@ body {
 }
 
 .buttonContainer a {
-    background-color: #A7A297; /* Green */
+    background-color: #A7A297;
     border: none;
     color: white;
     padding: 15px 30px;

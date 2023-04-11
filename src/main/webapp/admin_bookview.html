@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html>
-<title>Admin</title>
+<html lang="en-us">
 
 <head>
+  <title>Admin Book View</title>
   <!-- Loads the icons used in the navigation bar and footer -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--  Loads the css file -->
@@ -13,13 +13,16 @@
 </head>
 
 <body style="background-color:#E1E0D5;">
+<!-- navbar -->
 <div class="topnav">
   <a href="/index.html"><i class="fa fa-fw fa-home"></i> Home</a>
   <a class="active" href="/admin.html">Admin</a>
   <a href="/admin.html">Logout</a>
 </div>
 
+<!-- form -->
 <center>
+  <!-- title -->
   <br>
   <br>
   <h1 id="bookViewTitle"></h1>
@@ -28,7 +31,7 @@
   <div class="admin-form-wrapper">
 
     <form>
-
+      <!-- input fields -->
       <div class="admin-mb-3">
         <label for="isbn" class="admin-form-label">
           ISBN
@@ -63,17 +66,19 @@
         <label for="cover" class="admin-form-label">
           Attach Image
         </label>
-        <input type="image" name="cover" id="cover" class="admin-form-input" value="Click to attach" />
+        <input type="file" name="cover" id="cover" class="admin-form-input" />
       </div>
+      <!-- action buttons -->
       <center>
       <span class="buttonContainer">
         <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;">Back</a>
         <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;" onclick="updateBook()">Update</a>
-        <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;"onclick="deleteBook()">Delete</a>
+        <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;" onclick="deleteBook()">Delete</a>
       </span>
       </center>
     </form>
   </div>
+  <!-- include js -->
   <script src="/js/bookview_functions.js"></script>
 </div>
 </body>

@@ -3,7 +3,7 @@ const requestOptions = {
     redirect: 'follow'
 };
 
-fetch("http://localhost:8080/library/getallbooks", requestOptions)
+fetch("http://localhost:8080/library/getallbooks", requestOptions) // get all books, then pass them to row handler to display book in table
     .then(response => response.json())
     .then(result => {
         for (const i of result) {
@@ -12,7 +12,7 @@ fetch("http://localhost:8080/library/getallbooks", requestOptions)
 })
     .catch(error => console.log('error', error));
 
-function rowHandler(data){
+function rowHandler(data){ // format information form fetch command into table
     const table = document.getElementById("example");
     let row = table.insertRow();
 

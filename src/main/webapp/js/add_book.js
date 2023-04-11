@@ -1,9 +1,9 @@
-function doFetch()
+function doFetch() // function that utilizes fetch command add book to library
 {
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
-    var raw = JSON.stringify({
+    var raw = JSON.stringify({ // create book
         "date": document.getElementById('date').value,
         "author": document.getElementById('author').value,
         "available": document.getElementById('availability').value,
@@ -19,8 +19,7 @@ function doFetch()
         redirect: 'follow'
     };
 
-    console.log("called");
-    fetch("http://localhost:8080/library/addbook", requestOptions)
+    fetch("http://localhost:8080/library/addbook", requestOptions) // fetch command to add
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));

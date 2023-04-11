@@ -10,7 +10,7 @@
   <!--  jquery -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
-
+<!-- navbar -->
 <body style="background-color:#E1E0D5">
 <div class="topnav">
   <a href="/index.html"><i class="fa fa-fw fa-home"></i> Home</a>
@@ -18,8 +18,10 @@
   <a href="/admin.html">Logout</a>
 </div>
 <center>
+  <!-- header and table -->
   <h1>Admin View</h1>
-  <h2>Click row to edit</h2>
+  <h2>Double-click book title to edit, may need to refresh to see changes</h2>
+  <br>
   <div>
     <table id="example">
       <tr>
@@ -31,6 +33,7 @@
       </tr>
     </table>
   </div>
+  <!-- make titles links -->
   <script>
     $(document).ready(function () {
 
@@ -44,6 +47,7 @@
     });
   </script>
   <br>
+  <!-- add book button and include js -->
   <a href="/admin_newbook.html" class="button">Add Book</a>
   <script src="js/book_display.js"></script>
 </center>

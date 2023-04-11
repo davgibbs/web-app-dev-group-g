@@ -1,3 +1,4 @@
+/* css for all admin content that are not forms */
 /* general */
 body {
     margin: 0;
@@ -14,7 +15,7 @@ h2 {
     font-size: medium;
 }
 
-/* table */
+/* admin home table */
 
 table#example {
     border-collapse: collapse;
@@ -89,14 +90,6 @@ table#example {
 .button:hover {
     background-color: #77746E;
     color: black;
-}
-
-.bookviewbody {
-    text-align: left;
-}
-
-.labeldiv {
-    margin-bottom: 10px;
 }
 
 label {

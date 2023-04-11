@@ -1,26 +1,26 @@
-const params = new Proxy(new URLSearchParams(window.location.search), { // find link value
+const params = new Proxy(new URLSearchParams(window.location.search), { // find isbn of book
     get: (searchParams, prop) => searchParams.get(prop),
 });
 
-let ISBNvalue = params.bookisbn; // "store it here"
+let ISBNvalue = params.bookisbn; // store it here
 
 const requestOptionsForPopulation = {
     method: 'GET',
     redirect: 'follow'
 };
 
-fetch("http://localhost:8080/library/getallbooks", requestOptionsForPopulation)
+fetch("http://localhost:8080/library/getallbooks", requestOptionsForPopulation) // get all data
     .then(response => response.json())
     .then(result => {
         for (const i of result) {
-            if (i.isbn == ISBNvalue){
+            if (i.isbn == ISBNvalue){ // filter the data so that it matches isbn
                 prepopulate(i);
             }
         }
     })
     .catch(error => console.log('error', error));
 
-function prepopulate(book){
+function prepopulate(book){ // insert title and prepopulate the table for ease of editing
     document.getElementById("bookViewTitle").innerText = book.title;
     document.getElementById("isbn").value = book.isbn;
     document.getElementById("title").value = book.title;
@@ -29,12 +29,12 @@ function prepopulate(book){
     document.getElementById("date").value = book.date;
 }
 
-function deleteBook() {
+function deleteBook() { // use fetch command to delete book
     var requestOptions = {
         method: 'DELETE',
         redirect: 'follow'
     };
-    var delURL = "http://localhost:8080/library/deletebook/" + ISBNvalue;
+    var delURL = "http://localhost:8080/library/deletebook/" + ISBNvalue; // string concatenation with isbn val
 
 
     fetch(delURL, requestOptions)
@@ -43,7 +43,7 @@ function deleteBook() {
         .catch(error => console.log('error', error));
 }
 
-function addBook() {
+function addBook() { // same add book function as before
     var myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
 
@@ -70,7 +70,7 @@ function addBook() {
         .catch(error => console.log('error', error));
 }
 
-function updateBook() {
+function updateBook() { // updating a book consists of deleting the old one and adding with the present form content
     deleteBook();
     addBook();
 }
