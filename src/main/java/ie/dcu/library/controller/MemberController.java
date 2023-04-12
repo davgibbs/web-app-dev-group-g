@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import ie.dcu.library.entity.MemberEntity;
-import ie.dcu.library.model.Members;
+import ie.dcu.library.model.Member;
 import ie.dcu.library.repository.MembersRepository;
 
 public class MemberController {

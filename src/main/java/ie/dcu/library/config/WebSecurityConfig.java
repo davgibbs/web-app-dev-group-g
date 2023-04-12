@@ -74,8 +74,10 @@ public class WebSecurityConfig  {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/auth/*").permitAll()
-                                .requestMatchers(HttpMethod.POST, "/lecture").hasRole("ADMIN")
-                                .anyRequest().authenticated())
+                        		 .requestMatchers("/", "/auth/*", "/*.html", "/css/*", "/js/*", "/images/*", "/videos/*").permitAll()
+                        		 .requestMatchers("/library/*").permitAll()
+                                 .requestMatchers(HttpMethod.POST, "/lecture").hasRole("ADMIN")
+                                 .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider());
 
         return http.build();

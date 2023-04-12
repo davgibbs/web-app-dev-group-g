@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import ie.dcu.library.entity.MemberEntity;
 import ie.dcu.library.model.RoleName;
-import ie.dcu.library.model.Members;
+import ie.dcu.library.model.Member;
 
 @Repository
 public interface MembersRepository

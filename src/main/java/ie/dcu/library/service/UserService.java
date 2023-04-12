@@ -5,7 +5,7 @@ import ie.dcu.library.entity.MemberEntity;
 import ie.dcu.library.mapper.MemberMapper;
 import ie.dcu.library.model.ErrorCode;
 import ie.dcu.library.model.RoleName;
-import ie.dcu.library.model.Members;
+import ie.dcu.library.model.Member;
 import ie.dcu.library.repository.MembersRepository;
 import ie.dcu.library.util.LibraryServiceException;
 import org.springframework.http.ResponseEntity;
@@ -38,19 +38,19 @@ public class UserService implements UserDetailsService {
         this.roleService = roleService;
     }
 
-    public Members findByEmail(String email) {
+    public Member findByEmail(String email) {
         var user = userEntityRepository.findMemberEntityByUsername(email).orElseThrow(() ->
                 new LibraryServiceException("User not found", USER_NOT_FOUND));
         return mapper.entityToDto(user);
     }
 
-    public List<Members> listUsersByRole(RoleName roleName) {
+    public List<Member> listUsersByRole(RoleName roleName) {
         List<MemberEntity> entitiesByRolesName = userEntityRepository.findMemberEntitiesByRoles_Name(roleName);
         return mapper.mapList(entitiesByRolesName);
     }
 
     @Transactional
-    public Members signUpUser(String username, String email, String password) {
+    public Member signUpUser(String username, String email, String password) {
         userEntityRepository.findMemberEntityByUsername(username).ifPresent(u -> {
             throw new LibraryServiceException("Username taken", ErrorCode.USER_ALREADY_EXISTS);
         });
@@ -68,7 +68,7 @@ public class UserService implements UserDetailsService {
 
     }
 
-    public Members getUserById(long id) {
+    public Member getUserById(long id) {
         var userEntitybyId = userEntityRepository.findById(id).orElseThrow(
                 () -> new LibraryServiceException("User not found", USER_NOT_FOUND));
         return mapper.entityToDto(userEntitybyId);
@@ -93,7 +93,7 @@ public class UserService implements UserDetailsService {
         return authorities;
     }
 
-    public Members updateUser(Members user) {
+    public Member updateUser(Member user) {
         var userEntity = userEntityRepository.findById(user.getMemberid()).orElseThrow(
                 () -> new LibraryServiceException("User not found", USER_NOT_FOUND));        		
         userEntity.setUsername(user.getUname());

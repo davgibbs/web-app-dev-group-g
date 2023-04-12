@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import ie.dcu.library.model.Library_records;
+import ie.dcu.library.model.LibraryRecord;
 import ie.dcu.library.repository.RecordsRepository;
 
 //**********Mappings for the library_records Queries***********
@@ -24,14 +24,14 @@ public class RecordController {
 
 	  @CrossOrigin(origins = "*")
 	  @PostMapping("/addrecord") // POST to add to all fields within books database (Insert new Book)
-	  public void add(@RequestBody Library_records record) {
+	  public void add(@RequestBody LibraryRecord record) {
 		  libRepository.save(record);
 	  }
 
 	  //Returns record by entered record id (isbn number)
 	  @CrossOrigin(origins = "*")
 	  @GetMapping("/getrecord/{id}") 
-	  public Library_records getRecordById(
+	  public LibraryRecord getRecordById(
 	      @PathVariable(value="id") int id)
 	  {
 	      return libRepository.findById(id);
@@ -39,7 +39,7 @@ public class RecordController {
 
 	  //Returns all books
 	  @GetMapping(path="/getallrecords")		
-	  public @ResponseBody Iterable<Library_records> getAllRecords() {
+	  public @ResponseBody Iterable<LibraryRecord> getAllRecords() {
 	    return libRepository.findAll();
 	  }
 

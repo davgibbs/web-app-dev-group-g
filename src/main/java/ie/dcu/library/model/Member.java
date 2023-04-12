@@ -6,7 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
 @Entity // This tells Jakarta JPA to make a table out of this class
-public class Members {
+public class Member {
 	@Id
 	private Long memberid;
 	private String uname;

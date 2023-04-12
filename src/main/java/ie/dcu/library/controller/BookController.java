@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import ie.dcu.library.entity.Login;
-import ie.dcu.library.model.Books;
-import ie.dcu.library.model.Library_records;
-import ie.dcu.library.model.Members;
+import ie.dcu.library.model.Book;
+import ie.dcu.library.model.LibraryRecord;
+import ie.dcu.library.model.Member;
 import ie.dcu.library.repository.LibraryRepository;
 import ie.dcu.library.repository.LoginRepository;
 import ie.dcu.library.repository.MembersRepository;
@@ -41,14 +41,14 @@ public class BookController {
   
   @CrossOrigin(origins = "*")
   @PostMapping("/addbook") // POST to add to all fields within books database (Insert new Book)
-  public void add(@RequestBody Books book) {
+  public void add(@RequestBody Book book) {
 	  bookRepository.save(book);
   }
 
 //Returns book by entered book id (isbn number)
   @CrossOrigin(origins = "*")
   @GetMapping("/getbook/{id}") 
-  public Books getBookById(
+  public Book getBookById(
       @PathVariable(value="id") int id)
   {
       return bookRepository.findById(id);
@@ -56,7 +56,7 @@ public class BookController {
   
 //Returns all books
   @GetMapping(path="/getallbooks")		
-  public @ResponseBody Iterable<Books> getAllUsers() {
+  public @ResponseBody Iterable<Book> getAllUsers() {
     return bookRepository.findAll();
   }
 
@@ -70,13 +70,13 @@ public class BookController {
   }
   
   @GetMapping(path="/getauthor")
-  public ResponseEntity<List<Books>> getBooksByAuthor(@RequestParam String author){
-	  return new ResponseEntity<List<Books>>(bookRepository.findByAuthor(author), HttpStatus.OK);
+  public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam String author){
+	  return new ResponseEntity<List<Book>>(bookRepository.findByAuthor(author), HttpStatus.OK);
   }
   
   @GetMapping(path="/gettitle")
-  public ResponseEntity<List<Books>> getBooksByTitle(@RequestParam String title){
-	  return new ResponseEntity<List<Books>>(bookRepository.findByTitle(title), HttpStatus.OK);
+  public ResponseEntity<List<Book>> getBooksByTitle(@RequestParam String title){
+	  return new ResponseEntity<List<Book>>(bookRepository.findByTitle(title), HttpStatus.OK);
   }
      
   
