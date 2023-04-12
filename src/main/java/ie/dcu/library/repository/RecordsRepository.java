@@ -6,18 +6,15 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import ie.dcu.library.model.library_records;
+import ie.dcu.library.model.LibraryRecord;
 
 @Repository
-
 public interface RecordsRepository
-    extends CrudRepository<library_records,
-                           Integer> {
+    extends CrudRepository<LibraryRecord, Integer> {
   
-	library_records findById(int id);
-    List<library_records> findAll();
-    void deleteById(int id);
-    
+	LibraryRecord findById(int id);
+    List<LibraryRecord> findAll();
+    void deleteById(int id);    
 }	
 	
 	

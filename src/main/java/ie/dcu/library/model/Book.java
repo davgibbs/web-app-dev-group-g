@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
-@Entity // This tells Jakarta JPA to make a table out of this class
-public class books {
+@Entity(name="books") // This tells Jakarta JPA to make a table out of this class
+public class Book {
   @Id
   private Integer isbn;
   private String title;
@@ -21,11 +21,11 @@ public class books {
 //  private String Customer;
   private String image;
   
- public books() {
+ public Book() {
 	  
   }
   
-  public books(Integer id, String title, String author, String avail, Date date, String image) {
+  public Book(Integer id, String title, String author, String avail, Date date, String image) {
 	  this.isbn = id;
 	  this.title = title;
 	  this.author = author;
