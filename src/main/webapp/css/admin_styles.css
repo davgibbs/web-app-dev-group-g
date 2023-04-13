@@ -15,30 +15,30 @@ h2 {
     font-size: medium;
 }
 
-/* admin home table */
+/* admin tables */
 
-table#example {
+table {
     border-collapse: collapse;
 }
-#example tr {
+tr {
     background-color: #eee;
     border-top: 1px solid #fff;
 }
-#example tr:hover {
+tr:hover {
     background-color: #ccc;
 }
-#example th {
+th {
     background-color: #fff;
     text-align: left;
 }
 
-#example td {
+td {
     text-decoration: none;
 }
-#example th, #example td {
+th,  td {
     padding: 3px 5px;
 }
-#example td:hover {
+td:hover {
     cursor: pointer;
 }
 

@@ -13,14 +13,13 @@ fetch("http://localhost:8080/library/getallrecords", requestOptions) // get all 
     .catch(error => console.log('error', error));
 
 function rowHandler(data){ // format information form fetch command into table
-    /*
-    const table = document.getElementById("example");
+    const table = document.getElementById("records");
     let row = table.insertRow();
 
-    row.insertCell(0).innerHTML = data.isbn;
-    row.insertCell(1).innerHTML = `<a href="/admin_bookview.html?bookisbn=${data.isbn}" style="color: black; text-decoration: none;">${data.title}</a>`
-    row.insertCell(2).innerHTML = data.author;
-    row.insertCell(3).innerHTML = data.date;
-    row.insertCell(4).innerHTML = data.available;
-    */
+    row.insertCell(0).innerHTML = data.recordid;
+    row.insertCell(1).innerHTML = data.memberid;
+    row.insertCell(2).innerHTML = data.isbn;
+    row.insertCell(3).innerHTML = data.borrowed_date;
+    row.insertCell(4).innerHTML = data.due_date;
+    row.insertCell(5).innerHTML = data.overdue;
 }
