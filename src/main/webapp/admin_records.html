@@ -21,36 +21,22 @@
 <center>
   <!-- header and table -->
   <h1>Admin View</h1>
-  <h2>Double-click book title to edit, may need to refresh to see changes</h2>
+  <h2>View current records</h2>
   <br>
   <div>
-    <table id="example">
+    <table id="records">
       <tr>
-        <th>ISBN</th>
-        <th>Title</th>
-        <th>Author</th>
-        <th>Date</th>
-        <th>Available?</th>
+        <th>???</th>
+        <th>???</th>
+        <th>???</th>
+        <th>???</th>
+        <th>???</th>
       </tr>
     </table>
   </div>
-  <!-- make titles links -->
-  <script>
-    $(document).ready(function () {
-
-      $('#example tr').click(function () {
-        var href = $(this).find("a").attr("href");
-        if (href) {
-          window.location = href;
-        }
-      });
-
-    });
-  </script>
   <br>
   <!-- add book button and include js -->
-  <a href="/admin_newbook.html" class="button">Add Book</a>
-  <script src="js/book_display.js"></script>
+  <script src="js/record_display.js"></script>
 </center>
 </body>
 
