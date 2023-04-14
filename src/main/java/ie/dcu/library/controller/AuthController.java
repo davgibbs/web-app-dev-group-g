@@ -5,6 +5,8 @@ import ie.dcu.library.model.TokenResponse;
 import ie.dcu.library.model.UserCredentials;
 import ie.dcu.library.service.UserService;
 import ie.dcu.library.util.JwtTokenUtil;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -32,6 +34,7 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
 
+    @Autowired
     public AuthController(UserService userService, PasswordEncoder passwordEncoder, AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil) {
         this.userService = userService;
         this.passwordEncoder = passwordEncoder;

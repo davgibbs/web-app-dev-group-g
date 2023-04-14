@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Collection;
 
-@Entity(name = "member")
+@Entity(name = "members")
 public class MemberEntity {
 
 	    public MemberEntity() {
@@ -22,7 +22,7 @@ public class MemberEntity {
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	    private Long id;
 
-	    private String email;
+		private String email;
 	    private String username;
 	    private String password;
 	    private String firstname;
@@ -41,8 +41,8 @@ public class MemberEntity {
 	    private Collection<RoleEntity> roles = new ArrayList<>();
 
 	    public Long getId() {
-	        return this.id;
-	    }
+			return id;
+		}
 
 	    public String getEmail() {
 	        return this.email;
@@ -68,9 +68,9 @@ public class MemberEntity {
 	        return this.roles;
 	    }
 
-	    public void setId(Long id) {
-	        this.id = id;
-	    }
+		public void setId(Long id) {
+			this.id = id;
+		}
 
 	    public void setEmail(String email) {
 	        this.email = email;

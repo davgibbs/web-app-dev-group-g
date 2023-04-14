@@ -1,5 +1,5 @@
 //Contains boilerplate code for login class - D.Mullen EE417_Group_Project
-
+/*
 package ie.dcu.library.entity;
 
 import jakarta.persistence.Entity;
@@ -46,4 +46,4 @@ public class Login {
 	this.Pass = sname;
 	}
 
-}
+}*/

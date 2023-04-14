@@ -8,6 +8,8 @@ import ie.dcu.library.model.RoleName;
 import ie.dcu.library.model.Member;
 import ie.dcu.library.repository.MembersRepository;
 import ie.dcu.library.util.LibraryServiceException;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -21,6 +23,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import static ie.dcu.library.model.ErrorCode.USER_NOT_FOUND;
 
@@ -32,20 +35,28 @@ public class UserService implements UserDetailsService {
 
     private final RoleService roleService;
 
+    @Autowired
     public UserService(MembersRepository userEntityRepository, MemberMapper mapper, RoleService roleService) {
         this.userEntityRepository = userEntityRepository;
         this.mapper = mapper;
         this.roleService = roleService;
     }
+    
+    public Long getId(String email) {
+    	var user = userEntityRepository.findMemberEntityByEmail(email).orElseThrow(() ->
+          new LibraryServiceException("User not found", USER_NOT_FOUND));
+    	return user.getId();
+
+    }
 
     public Member findByEmail(String email) {
-        var user = userEntityRepository.findMemberEntityByUsername(email).orElseThrow(() ->
+        var user = userEntityRepository.findMemberEntityByEmail(email).orElseThrow(() ->
                 new LibraryServiceException("User not found", USER_NOT_FOUND));
         return mapper.entityToDto(user);
     }
 
     public List<Member> listUsersByRole(RoleName roleName) {
-        List<MemberEntity> entitiesByRolesName = userEntityRepository.findMemberEntitiesByRoles_Name(roleName);
+        List<MemberEntity> entitiesByRolesName = userEntityRepository.findMemberEntitiesByRoles_rolename(roleName);
         return mapper.mapList(entitiesByRolesName);
     }
 
@@ -62,7 +73,7 @@ public class UserService implements UserDetailsService {
         user.setPassword(password);
         user.setUsername(username);
         user.setEmail(email);
-        user.addRole(roleService.findRoleByName(RoleName.USER));
+        user.addRole(roleService.findRoleByRolename(RoleName.USER));
         MemberEntity created = userEntityRepository.save(user);
         return mapper.entityToDto(created);
 
@@ -87,14 +98,14 @@ public class UserService implements UserDetailsService {
         List<GrantedAuthority> authorities
                 = new ArrayList<>();
         for (RoleEntity role: roles) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName().name()));
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRolename().name()));
         }
 
         return authorities;
     }
 
     public Member updateUser(Member user) {
-        var userEntity = userEntityRepository.findById(user.getMemberid()).orElseThrow(
+        var userEntity = userEntityRepository.findById(user.getId()).orElseThrow(
                 () -> new LibraryServiceException("User not found", USER_NOT_FOUND));        		
         userEntity.setUsername(user.getUname());
         userEntity.setFirstname(user.getFirstname());

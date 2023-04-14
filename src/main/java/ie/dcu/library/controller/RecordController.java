@@ -1,17 +1,27 @@
 package ie.dcu.library.controller;
+import java.time.LocalDate;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import ie.dcu.library.model.Book;
 import ie.dcu.library.model.LibraryRecord;
-import ie.dcu.library.repository.RecordsRepository;
+import ie.dcu.library.service.BookService;
+import ie.dcu.library.service.RecordService;
+import ie.dcu.library.service.UserService;
+import ie.dcu.library.util.JwtTokenUtil;
 
 //**********Mappings for the library_records Queries***********
 
@@ -19,13 +29,46 @@ import ie.dcu.library.repository.RecordsRepository;
 @RequestMapping(path="/library")
 public class RecordController {
 
-	  @Autowired
-	  private RecordsRepository libRepository;
+	  private final RecordService recordService;
+	  private final BookService bookService;
+	  private final UserService userService;
+      private final JwtTokenUtil tokenUtil;
 
+
+	  @Autowired
+	  public RecordController(RecordService recordService, BookService bookService, JwtTokenUtil tokenUtil,UserService userService){
+		  this.recordService = recordService;
+		  this.bookService = bookService;
+		  this.tokenUtil = tokenUtil;
+		  this.userService = userService;
+	  }
+	  
 	  @CrossOrigin(origins = "*")
-	  @PostMapping("/addrecord") // POST to add to all fields within books database (Insert new Book)
-	  public void add(@RequestBody LibraryRecord record) {
-		  libRepository.save(record);
+	  @GetMapping("/borrow/{isbn}") // POST to add to all fields within libraryrecords database
+	  public LibraryRecord add(
+			  @RequestHeader (value="Authorization") String authorizationHeader,
+			  @PathVariable(value = "isbn") int isbn){
+
+	      String token = authorizationHeader.substring(7);
+	      //System.out.println(token);
+	      String email = tokenUtil.getUsernameFromToken(token);
+	      //System.out.println(email);
+	      
+		  LibraryRecord record = new LibraryRecord();
+		  var borrow_date = LocalDate.now();
+	      var due_date = borrow_date.plusWeeks(2);
+	      
+	      Long memberid = userService.getId(email);
+	      record.setMemberid(memberid.intValue());
+	      record.setISBN(isbn);
+	      record.setBorrowed_date(borrow_date);
+	      record.setDue_date(due_date);
+	      
+		  recordService.add(record);
+		  Book b = bookService.getBookByIsbn(isbn);
+		  b.setAvailable(false);
+		  bookService.modifyBook(b);
+		  return record;
 	  }
 
 	  //Returns record by entered record id (isbn number)
@@ -34,22 +77,25 @@ public class RecordController {
 	  public LibraryRecord getRecordById(
 	      @PathVariable(value="id") int id)
 	  {
-	      return libRepository.findById(id);
+	      return recordService.getRecordById(id);
 	  }
 
 	  //Returns all books
-	  @GetMapping(path="/getallrecords")		
+	  @GetMapping(path="/getallrecords")
+	  @PreAuthorize("hasRole('ADMIN')")
 	  public @ResponseBody Iterable<LibraryRecord> getAllRecords() {
-	    return libRepository.findAll();
+	    return recordService.getAllRecords();
 	  }
 
 	  @CrossOrigin(origins = "*")
-	  @DeleteMapping("/deleterecord/{id}")
+	  @DeleteMapping("/return/{bookid}")
 	  public void deleterecord(
-	      @PathVariable(value = "id") int id)
-	  {
-	      libRepository.deleteById(id);
+	      @PathVariable(value = "bookid") int isbn)
+	  {              
+	  Book b = bookService.getBookByIsbn(isbn);
+	  b.setAvailable(true);
+	  var book = bookService.modifyBook(b);	  
+	  recordService.deleterecord(book.getISBN());
 	  }
-
 	  
 }

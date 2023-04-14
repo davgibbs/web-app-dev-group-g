@@ -1,4 +1,4 @@
-package ie.dcu.library.repository;
+/*package ie.dcu.library.repository;
 
 //Crud Repository interface for obtaining login details from database - includes methods for finding by id, returning all logins and delete by id
 
@@ -18,4 +18,4 @@ public interface LoginRepository
   List<Login> findAll();
   void deleteById(int id);
   
-}
+}*/
