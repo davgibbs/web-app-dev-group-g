@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./styles/nav.css">
+    <link rel="stylesheet" href="./styles/account.css">
+
+    <title>Account</title>
+</head>
+
+<body>
+    <div class="topnav">
+        <a href="Home.html"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="Books.html">Books</a>
+        <a href="login.html">Login</a>
+        <a href="account.html">Account</a>
+
+
+        <div class="search-container">
+            <form onsubmit="searchEngine()">
+                <!-- Dropdown menu where the user selects what the reason they wish to contact us is -->
+                <!-- This is to make it easier for the company when reading the message-->
+                <select id="reason" name="reason">
+                    <option value="Title">Title</option>
+                    <option value="Author">Author</option>
+                </select>
+                <input type="text" placeholder="Search.." name="search" style="margin-left:0px">
+                <button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
+    </div>
+
+    <div class="title">
+        <h1>Your account details</h1>
+    </div>
+
+    <main>
+        <div class="container">
+            <div class="user">
+                <div class="image">
+                    <img src="images/blank-profile-pic.webp" alt="Profile pic">
+                </div>
+                <div class="uname_c">
+                    <h1 id="uname">Username</h1>
+                </div>
+            </div>
+
+            <div class="text">
+                <ul class="list">
+                    <li id="name">Name</li>
+                    <li id="surname">Surname</li>
+                    <li id="email">Email</li>
+                    <br>
+                    <li>Your password is : <b><a id="psw"></a></b></li>
+                </ul>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+
+<footer>
+    <div class="footer-content">
+      <div class="footer-row">
+        <div class="footer-column" style="margin-right:10px">
+          <!-- Contact information, incase anyone needs to get in contact -->
+          <p style="font-size:18px"><b>CONTACT INFO:</b></p>
+          <p style="margin-top:-5px">Email: isobel.fox4@mail.dcu.ie</p>
+           <p style="margin-top:-5px">Tel: +353 8 7123456</p>
+        </div>
+        <div class="footer-column" style="margin-left:10px">
+          <!-- Links to the buy season ticket, and league/championship tickets websites -->
+          <p style="font-size:18px; margin-bottom:20px"><b>ACCOUNT:</b></p>
+          <p style="margin-top:-5px">
+            <a href="login.html">Login</a>
+        </p>
+        <p style="margin-top:-5px">
+            <a href="account.html">Account details</a>
+        </p>
+        </div>
+        <div class="footer-column" style="margin-left:10px">
+          <!-- Links to the buy season ticket, and league/championship tickets websites -->
+          <p style="font-size:18px; margin-bottom:20px"><b>DISCOVER:</b></p>
+          <p style="margin-top:-5px">		
+              <a href="Home.html">Home</a>
+          </p>
+          <p style="margin-top:-5px">		
+              <a href="Books.html">Books</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  
+    <!-- draws a line -->
+    <hr class="line" style="margin-bottom:20px">
+    <!-- On bottom on the left and right has signature and copywrite-->
+    <p style="text-align:center;"><i class="fa fa-copyright"></i>
+      2023 Library books IE <br>
+    </p>
+</footer>
+
+<script type="text/javascript" src="./scripts/account.js"></script>
+
+</html>

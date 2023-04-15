@@ -1,0 +1,231 @@
+/* The navigation bar set up*/
+/* The overflow is clipped to hide the rest of the content */
+/* The background colour is set*/
+/* The buttons are centered on the page */
+.topnav {
+  overflow: hidden;
+  background-color: #A7A297;
+}
+
+/* The topnav hyperlinks are floating to the left */
+/* The text colour is set and padding is added*/
+/* The underline is removed */
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+/* The topnav hyperlink background colour and the text colour changes when the mouse is hovering on it */
+.topnav a:hover {
+  background-color: #FDFDFD;
+  color: #A7A297;
+}
+
+/* The topnav hyperlink background colour and the text colour changes when active */
+.topnav a.active {
+  background-color: #77746E;
+  color: white;
+}
+
+/* The dropdown hyperlink background colour and the text colour changes when the mouse is hovering on it or active*/
+.topnav a:hover,
+.dropdown:hover .dropbtn {
+  background-color: #FDFDFD;
+  color: #A7A297;
+}
+
+.topnav .search-container {
+  float: right;
+}
+
+.topnav input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  font-size: 17px;
+  border: none;
+}
+
+.topnav select {
+  padding: 6px;
+  padding-top: 8px;
+  padding-right: 0px;
+  margin-right: -4px;
+  margin-top: 8px;
+  color: #676561;
+  background: #D3CFC6;
+  font-size: 14px;
+  border: none;
+}
+
+.topnav select:hover {
+  background: #C8C2B6;
+}
+
+.topnav .search-container a {
+  float: right;
+  padding: 6px 10px;
+  margin-top: 8px;
+  margin-right: 16px;
+  background: #ddd;
+  color: black;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+
+.topnav .search-container a:hover {
+  background: #ccc;
+}
+
+/* The login content deals with the column on the left that holds the login form details */
+/* The border radius is set to cruve the outside edges of the content */
+/* Margin is added all around to achieve the gap around content bar on the right hand side*/
+/* A shadow is added on the edges of the content for aesthetics */
+/* The background colour is set to achieve the desire effect */
+.login-content {
+  padding: 16px;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+
+
+
+/* Create two equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 55.5%;
+  padding: 10px;
+  margin: 0px;
+  height: 300px;
+  /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.search-content {
+  padding: 16px;
+  margin: 5%;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.search-content input[type=text] {
+  padding: 6px;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: 17px;
+  width: 60%;
+  border: solid 1px #BDBDBD;
+  border-radius: 5px;
+}
+
+.search-content button {
+  padding: 6px 10px;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+  border: solid 1px #BDBDBD;
+  color: white;
+  width: 90%;
+  margin-right: 5%;
+  margin-left: 5%;
+  border-radius: 5px;
+}
+
+.search-content button:hover {
+  background: #ccc;
+}
+
+.searchTypeBar a {
+  text-align: left;
+  padding: 6px 16px;
+  color: #8E8E8E;
+  text-decoration: none;
+}
+
+.searchTypeBar a:hover,
+.searchTypeBar a.active {
+  border-bottom: solid 3px #BA676A;
+}
+
+.searchButton {
+  margin-right: 10px;
+  margin-left: -4px;
+  padding: 6px;
+  font-size: 17px;
+  border: none;
+  background: #ddd;
+}
+
+.searchButton:hover {
+  background: #ccc;
+}
+
+
+
+
+
+
+
+/* Sets the the text that will be in the columns */
+/* Sets up the margins to match the copyright */
+.footer-content {
+  margin-left: 68px;
+  margin-top: 30px;
+}
+
+/* Sets the links to white as their normally purple and removes the underline */
+.footer-content a {
+  color: white;
+  text-decoration: none;
+}
+
+/* Creates 3 columns */
+.footer-column {
+  float: left;
+  width: 28%;
+  padding: 10px;
+}
+
+/* After the column this clears the floats */
+.footer-row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Sets up the footer: */
+/* Sets the top margin so there is a gap between anything above the footer */
+/* Sets the footer all the way to the bottom of the page */
+/* Sets the background colour to the same colour as the logo header bar */
+footer {
+  margin-top: auto;
+  /*  margin-top: 50px;*/
+  overflow: hidden;
+  background-color: #A7A297;
+  color: white;
+  bottom: 0;
+  width: 100%;
+}
+
+
+@media screen and (max-width:768px) {
+  .footer-column {
+    float: left;
+    width: 10em;
+    padding: 10px;
+  }
+}
