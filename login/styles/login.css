@@ -20,7 +20,7 @@ h1 {
 
 
 /* Full-width inputs */
-input[type=text],
+.container input[type=text],
 input[type=password] {
     width: 100%;
     padding: 12px 20px;
@@ -38,7 +38,7 @@ input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+.container button {
     background-color: #04AA6D;
     color: white;
     padding: 14px 20px;
@@ -49,7 +49,7 @@ button {
 }
 
 /* Add a hover effect for buttons */
-button:hover {
+.container button:hover {
     opacity: 0.8;
 }
 
@@ -58,6 +58,7 @@ button:hover {
     padding: 10px 18px;
     background-color: grey;
 }
+
 #signin_btn {
     padding: 10px 18px;
     background-color: grey;
@@ -80,13 +81,7 @@ img.avatar {
 /* Add padding to containers */
 .container {
     padding: 16px;
-    
-}
 
-/* The "Forgot password" text */
-span.psw {
-    float: right;
-    padding-top: 16px;
 }
 
 #signup_form {
@@ -95,18 +90,20 @@ span.psw {
 
 /* Removes image and forgot password button on small screens */
 @media screen and (max-width: 768px) {
-    form {
+    .form_container form {
         border: 3px solid #f1f1f1;
         width: 100%;
         margin-left: 0;
     }
-    
-    .avatar{
+
+    .avatar {
         display: none;
     }
-    .imgcontainer{
+
+    .imgcontainer {
         display: none;
     }
+
     span.psw {
         display: none;
         float: none;

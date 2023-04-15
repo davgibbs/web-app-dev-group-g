@@ -1,11 +1,13 @@
 body{
-    background-color: #E1E0D5
+    margin: 0;
+    background-color: #E1E0D5;
+    font-family: Calibri, sans-serif;
 }
 
 /*==========================================*/
             /* title */
 /*==========================================*/
-body>div {
+.title {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -15,7 +17,7 @@ body>div {
 
 }
 
-body>div h1 {
+.title h1 {
     display: flex; 
     align-self: center;
 

@@ -1,3 +1,4 @@
+
 function CheckPassword() {
     var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     if (document.querySelector('#signup_form').style.display == 'block') {
@@ -9,8 +10,6 @@ function CheckPassword() {
     //check if the password has 6-20 characters with one digit, one uppercase and one lowercase letter
     if (psw.value.match(check)) {
         psw.style.backgroundColor = "rgba(100, 223, 100, 0.603)";
-        psw = psw.value;
-        window.sessionStorage.setItem('psw', psw);
         return true;
     }
     else {
@@ -31,8 +30,6 @@ function CheckUsername() {
     if (uname.value.match(check)) {
         //if DatabaseUsername(uname)
         uname.style.backgroundColor = "rgba(100, 223, 100, 0.603)";
-        uname = uname.value;
-        window.sessionStorage.setItem('uname', uname);
         return true;
     }
     else {
@@ -43,115 +40,65 @@ function CheckUsername() {
 
 
 
-/*
-    Database checks 
-*/
+/*  ///////////////////////////////
+        Database check for login
+/////////////////////////////// */
+const requestOptionsGet = {
+    method: 'GET',
+    redirect: 'follow'
+};
 
-//should only need to check for uname and psw
-function DatabaseUsername(database, uname) {
-    //check for username in database
-
-    //return id ? 
-    //return true(in database)
-    //return false (not in)
-
-    if ( database == input) {
-        return true
-        //pas besoin de ça le fetch renvoi directement ce qu'il faut
-    }else {
-
-    }
-
-}
-
-function DatabasePsw() {
-
-}
-
-//to modify to correct fecth
-function CheckDatabase(uname) {
-    //fetch id using username and storing id in browser
-    
-    var requestOptions = {
-        method: 'GET',
-        redirect: 'follow'
-    };
-/*
-    fetch("http://localhost:8080/library/getmember/{username}", requestOptions)
-    .then(data => {
-    	data.forEach(obj => {
-      		for (const i of obj) {
-            	insertRow(i);
-        	}
-    	});
-  	})
-  	.catch(error => console.error(error));
-*/
-    var username = uname.value;
-
-    try {
-        
-    } catch (error) {
-        
-    }
-    var data = fetch("http://localhost:8080/library/getmember/{username}", requestOptions)
-
-    if(data[2])
-
-    if(DatabaseUsername(data[1])){
-        DatabasePsw()
-    }
-
-    data.forEach(element => {
-        if (k == input) {
-            return false
-        }
-    });
-
-    //for may not be required as the query would either output the infos or error?
-    return true
+//check for uname and psw
+function checkLogin() {
+    //variable selection   
+    var inputUname = document.getElementById('uname_login');
+    var inputPsw = document.getElementById('psw_login');
+    //fetch
+    fetch("http://localhost:8080/library/getlogin/${inputUname}", requestOptionsGet)
+        .then(response => response.json())
+        .then(result => {
+            if (inputUname.value == result.uname) {
+                if (inputPsw.value = result.pass) {
+                    window.sessionStorage.setItem('id', result.loginid);
+                    return true;
+                } else {
+                    psw.style.backgroundColor = "rgba(223, 100, 100, 0.603)";
+                    document.getElementById("psw_p").innerHTML = "Password does not correspond to the username";
+                    return false;
+                }
+            } else {
+                document.getElementById("uname_p").innerHTML = "Username does not exist please sign up or try a different username";
+                return false;
+            }
+        })
+        .catch(error => console.log('error', error));
 }
 
 
-
-/*
-if (CheckDatabase('password', psw)){
-document.querySelector(psw + '_p').innerHTML = "*Field must not be empty";
-
-window.sessionStorage.setItem('psw', psw);
-return true;
-}*/
-
-
-
-/* 
-    Submit login (less test than signup)
-*/
-
-/*check for inputs in database*/
+/*  ///////////////////////////////
+    verify quality of login inputs on click
+/////////////////////////////// */
 document.getElementById("submit_login").addEventListener('click', event => {
     //on click of the submit button verifies that all conditions are respected
     event.preventDefault();
-    var t1 = CheckUsername();
 
-    const psw = document.login.psw;
+    var t1 = CheckUsername();
     var t2 = CheckPassword();
 
+    const psw = document.login.psw;
     if (t1 && t2) {
-        document.querySelector('#login').submit();
+        var final = checkLogin();
+        if (final) {
+            document.querySelector('#login').submit();
+        }
     }
-
-
 })
 
 
 
-/*
-    More tests for signup
-*/
-
-/*add a check for database if username... already exist*/
-
+/*  ///////////////////////////////
+        More tests for signup
+/////////////////////////////// */
 function Checkform(id, reg) {
     const value = document.querySelector(id).value; //gives the value inside the form to "value"
 
@@ -176,19 +123,85 @@ function Checkform(id, reg) {
             document.querySelector(id + '_p').style = "color: default";
             document.querySelector(id + '_p').innerHTML = "";
             document.querySelector(id).style.backgroundColor = "rgba(100, 223, 100, 0.603)";
-
-            //storage
-            window.sessionStorage.setItem(id, value);
-
             return true;
         }
     }
     return false;
 }
 
+/*  ///////////////////////////////
+       add signup to database 
+/////////////////////////////// */
+function signUp() {
+    //variable selection
+    var inputUname = document.getElementById('uname_signup');
+
+    //Check that uname not already in database
+    fetch("http://localhost:8080/library/getlogin", requestOptionsGet)
+        .then(response => response.json())
+        .then(result => {
+            for (const data of result) {
+                if (data.uname == inputUname) {
+                    document.getElementById("uname_ps").innerHTML = "Username already exists";
+                    return false;
+                }
+            }
+        })
+        .catch(error => console.log('error', error));
+
+    //create Json files for adding to database
+    var myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    var member = JSON.stringify({ // create member
+        "name": document.getElementById("name").value,
+        "surname": document.getElementById("surname").value,
+        "email": document.getElementById("email").value
+    });
+    var login = JSON.stringify({ // create login
+        "username": inputUname.value,
+        "pass": document.getElementById("psw").value,
+    });
+
+    var requestOptionsAddMember = {
+        method: 'POST',
+        headers: myHeaders,
+        body: member,
+        redirect: 'follow'
+    };
+    var requestOptionsAddLogin = {
+        method: 'POST',
+        headers: myHeaders,
+        body: login,
+        redirect: 'follow'
+    };
+
+    //adding to database
+    fetch("http://localhost:8080/library/addmember", requestOptionsAddMember)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+    fetch("http://localhost:8080/library/addlogin", requestOptionsAddLogin)
+        .then(response => response.text())
+        .then(result => console.log(result))
+        .catch(error => console.log('error', error));
+
+    //now that the nex account has been created the id created in the database for the account can be stored in session storage 
+    var inputUname = document.getElementById('uname_signup');
+    fetch("http://localhost:8080/library/getlogin/${inputUname}", requestOptionsGet)
+        .then(response => response.json())
+        .then(result => {
+            window.sessionStorage.setItem('id', result.loginid);
+        })
+
+    return true;
+}
 
 
-
+/*  ///////////////////////////////
+    on click verifies signup inputs 
+    /////////////////////////////// */
 document.getElementById("submit_signup").addEventListener('click', event => {
     //on click of the submit button verifies that all conditions are respected
     event.preventDefault();
@@ -199,16 +212,22 @@ document.getElementById("submit_signup").addEventListener('click', event => {
     var t5 = CheckPassword();
 
     if (t1 && t2 && t3 && t4 && t5) {
-        document.querySelector('#signup').submit();
+        //if the form is completed properly -> call sign up function
+        var final = signUp();
+        if (final) {
+            //if the last test in signup is passsed (username not already in database)
+            //the the form can be sumbitted and go to next page of the website page
+            document.querySelector('#signup').submit();
+        }
     }
 })
 
 
 
-/*
-Change the form used
-*/
-
+/*  ///////////////////////////////
+        Change the form used
+    /////////////////////////////// */
+//display either the signup form or the login on click of the button
 var signup_btn = document.getElementById('signup_btn');
 var signup_form = document.querySelector('#signup_form');
 var signin_btn = document.getElementById('signin_btn');
@@ -235,3 +254,11 @@ signin_btn.onclick = function () {
         signup_form.style.display = 'none';
     }
 }
+
+
+document.getElementById("signup_btn").addEventListener('click', event => {
+    event.preventDefault();
+})
+document.getElementById("signin_btn").addEventListener('click', event => {
+    event.preventDefault();
+})

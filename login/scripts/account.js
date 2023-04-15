@@ -1,15 +1,30 @@
 
-//access the stored data and displays it in the contact page
-var uname = window.sessionStorage.getItem('uname');
-var psw = window.sessionStorage.getItem('psw');
+//display user info on the account page using the id stored in session storage
+const requestOptions = {
+    method: 'GET',
+    redirect: 'follow'
+};
 
-if(uname==null || psw ==null){
-    document.getElementById("uname").innerHTML = "Username";
-    document.getElementById("psw").innerHTML = "password";
-}else{
-    document.getElementById("uname").innerHTML = uname;
-    document.getElementById("psw").innerHTML = psw;
+function getUserInfo(id){
+    fetch("http://localhost:8080/library/getmember/${id}",requestOptions)
+    .then(response => response.json())
+    .then(result =>{
+        document.getElementById("name").innerHTML = result.name;
+        document.getElementById("surname").innerHTML = result.surname;
+        document.getElementById("email").innerHTML = result.email;
+    })
+    .catch(error => console.log('error', error));
+
+    fetch("http://localhost:8080/library/getlogin/${id}",requestOptions)
+    .then(response => response.json())
+    .then(result =>{
+        document.getElementById("uname").innerHTML = result.uname;
+        document.getElementById("psw").innerHTML = result.pass;
+    })
+    .catch(error => console.log('error', error));
 }
 
+var id = window.sessionStorage.getItem('id');
 
-//add fetch to the database to get the data stored using the id stored in the browser
+document.addEventListener('DOMContentLoaded', getUserInfo(id))
+// getUserInfo(id);
