@@ -76,7 +76,6 @@ public class WebSecurityConfig  {
                         authorize.requestMatchers("/auth/*").permitAll()
                         		 .requestMatchers("/", "/auth/*", "/*.html", "/css/*", "/js/*", "/images/*", "/videos/*").permitAll()
                         		 .requestMatchers("/library/*").permitAll()
-                                 .requestMatchers(HttpMethod.POST, "/lecture").hasRole("ADMIN")
                                  .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider());
 

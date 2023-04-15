@@ -12,7 +12,7 @@ import jakarta.persistence.ManyToMany;
 
 import java.util.Collection;
 
-@Entity(name = "role")
+@Entity(name = "roles")
 public class RoleEntity {
         @Id
         @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,10 +20,9 @@ public class RoleEntity {
 
         @Column(nullable = false)
         @Enumerated(EnumType.STRING)
-        private RoleName name;
+        private RoleName rolename;
 
-
-        @ManyToMany(mappedBy = "roles")
+		@ManyToMany(mappedBy = "roles")
         private Collection<MemberEntity> users;
 
         public RoleEntity() {
@@ -37,14 +36,13 @@ public class RoleEntity {
             this.id = id;
         }
 
-        public RoleName getName() {
-            return name;
-        }
+        public RoleName getRolename() {
+			return rolename;
+		}
 
-        public void setName(RoleName name) {
-            this.name = name;
-        }
-
+		public void setRolename(RoleName rolename) {
+			this.rolename = rolename;
+		}
         public Collection<MemberEntity> getUsers() {
             return users;
         }

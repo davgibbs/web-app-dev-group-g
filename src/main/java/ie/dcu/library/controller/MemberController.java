@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import ie.dcu.library.entity.MemberEntity;
 import ie.dcu.library.model.Member;
@@ -22,6 +23,13 @@ public class MemberController {
 	  public void add(@RequestBody MemberEntity member) {
 		  membRepository.save(member);
 	  }
+	  
+	  @CrossOrigin(origins = "*")
+	  @GetMapping("/getMemberId") // POST to add to all fields within members table (Insert new Member)
+	  public int getId(@RequestParam String uname) {
+		  return getId(uname);
+	  }	  
+	  
 	/*
 	  //Returns record by entered id (memberid number)
 	  @CrossOrigin(origins = "*")

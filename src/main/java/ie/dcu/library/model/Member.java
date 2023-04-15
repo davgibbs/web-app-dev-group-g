@@ -4,19 +4,34 @@ package ie.dcu.library.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotNull;
 
-@Entity // This tells Jakarta JPA to make a table out of this class
+//@Entity // This tells Jakarta JPA to make a table out of this class
 public class Member {
 	@Id
-	private Long memberid;
+	private Long id;
+    public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+	@NotNull
 	private String uname;
-	private String pwdhash;
+	@NotNull
+    private String pwd;
+    
+	/*public void setPassword(String password) {
+		this.password = password;
+	}*/
 	private String firstname;
 	private String surname;
+    @NotNull
 	private String email;
 	private String roleid;
 
-	public String getUname() {
+    public String getUname() {
 		return uname;
 	}
 
@@ -24,13 +39,22 @@ public class Member {
 		this.uname = uname;
 	}
 
-	public Long getMemberid() {
-		return memberid;
+	public String getPwd() {
+		return pwd;
 	}
-	
-	public void setMemberid(Long memberid) {
-		this.memberid = memberid;
+
+	public void setPwd(String pwd) {
+		this.pwd = pwd;
 	}
+	/*
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}*/
+
 	public String getRoleid() {
 		return roleid;
 	}

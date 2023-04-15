@@ -21,8 +21,8 @@ public class RoleService {
         this.mapper = mapper;
     }
 
-    public RoleEntity findRoleByName(RoleName roleName){
-        return  roleEntityRepository.findRoleEntityByName(roleName)
+    public RoleEntity findRoleByRolename(RoleName roleName){
+        return  roleEntityRepository.findRoleEntityByRolename(roleName)
                 .orElseThrow(() -> new LibraryServiceException(
                         String.format("Role %s does not exist", roleName.name()), ErrorCode.ROLE_NOT_FOUND)
                 );

@@ -1,29 +1,33 @@
 //Contains boilerplate code for library_records class - D.Mullen EE417_Group_Project
 package ie.dcu.library.model;
 	
+import java.time.LocalDate;
 import java.util.Date;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-	@Entity // This tells Hibernate to make a table out of this class
+	@Entity(name="library_records") // This tells Hibernate to make a table out of this class
 	public class LibraryRecord  {
 	  @Id
+      @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Integer recordid;
 	  private Integer memberid;
 	  private Integer isbn;
 	  @JsonFormat(pattern="yyyy-MM-dd")	//Tell Jackson to format the date to only provide date info
-	  private Date borrowed_date;
+	  private LocalDate borrowed_date;
 	  @JsonFormat(pattern="yyyy-MM-dd")
-	  private Date due_date;
+	  private LocalDate due_date;
 	  private String overdue;
 	  
 	  public LibraryRecord() {
 		  
 	  }
 	 
-	  public LibraryRecord(Integer recid, Integer membid, Integer isbn, Date borrowed_date, Date due_date, String overdue) {
-		  this.recordid = recid;
+	  public LibraryRecord(Integer membid, Integer isbn, LocalDate borrowed_date, LocalDate due_date, String overdue) {
+		//  this.recordid = recid;
 		  this.memberid = membid;
 		  this.isbn = isbn;
 		  this.borrowed_date = borrowed_date;
@@ -55,20 +59,20 @@ import jakarta.persistence.Id;
 		  public void setRecordid(Integer recid) {
 		    this.recordid = recid;
 		  }
-
-	  public Date getBorrowed_date() {
+	
+	  public LocalDate getBorrowed_date() {
 	    return borrowed_date;
 	  }
 
-	  public void setBorrowed_date(Date borrowed_date) {
+	  public void setBorrowed_date(LocalDate borrowed_date) {
 	    this.borrowed_date = borrowed_date;
 	  }
 	  
-	  public Date getDue_date() {
+	  public LocalDate getDue_date() {
 		    return due_date;
 		  }
 
-	  public void setDue_date(Date due_date) {
+	  public void setDue_date(LocalDate due_date) {
 		this.due_date = due_date;
 		  } 
 	  
