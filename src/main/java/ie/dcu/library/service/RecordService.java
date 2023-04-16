@@ -28,7 +28,11 @@ public class RecordService {
     public Iterable<LibraryRecord> getAllRecords() {
       return recordsRepository.findAll();
     }
- 
+
+    public Iterable<LibraryRecord> getRecordsbyUser(int memberid){
+        return recordsRepository.findByMemberid(memberid);
+    }
+
     //delete record using id
     public void deleterecord(int id)
     {

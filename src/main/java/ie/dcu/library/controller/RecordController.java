@@ -87,7 +87,21 @@ public class RecordController {
 	    return recordService.getAllRecords();
 	  }
 
+	  //Returns books borrowed by a user
+	  @GetMapping(path="/getrecordsByuser")
+	  public @ResponseBody Iterable<LibraryRecord> getRecordsbyUser(
+			  @RequestHeader (value="Authorization") String authorizationHeader
+			  ){
+	      String token = authorizationHeader.substring(7);
+	      String email = tokenUtil.getUsernameFromToken(token);
+	      
+	      Long memberid = userService.getId(email);		  
+		  return recordService.getRecordsbyUser(memberid.intValue());
+		  
+	  }
+
 	  @CrossOrigin(origins = "*")
+	  @PreAuthorize("hasRole('ADMIN')")	  
 	  @DeleteMapping("/return/{bookid}")
 	  public void deleterecord(
 	      @PathVariable(value = "bookid") int isbn)
