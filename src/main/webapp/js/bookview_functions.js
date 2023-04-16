@@ -22,7 +22,34 @@ $(document).ready(function(){
 	    .catch(error => console.log('error', error));
 	 
 	$("#update-delete-book").submit(function(event) {
+		//debugger todo
 		
+       	console.log("Handler for .submit() called delete book.");
+        event.preventDefault(); 
+    	var delURL = "./library/deletebook/" + iDvalue; // string concatenation with id val
+	    // Get token from main.js
+	    const jwtBearerToken = getToken();
+		  // use ajax command to delete book
+		 var deleting = $.ajax({
+	         type: 'delete',
+	         url: url,
+	         data: raw,
+	         contentType: "application/json; charset=utf-8",
+	         beforeSend: function (xhr){ 
+	        	xhr.setRequestHeader('Authorization', 'Bearer ' + jwtBearerToken); 
+	    	 },
+	     });
+	
+		posting.done(function( data ) {
+		  alert("Successfully deleted book");
+		  window.location.href = "./admin.html"	  
+		})
+		  
+		posting.fail(function( data ) {
+		  console.log(data)
+		  alert("Failed to delete book");
+		  window.location.href = "./admin.html"
+		})
 	})
 
 })
@@ -34,20 +61,6 @@ function prepopulate(book){ // insert title and prepopulate the table for ease o
     document.getElementById("author").value = book.author;
     document.getElementById("description").value = book.description;
     document.getElementById("date_publish").value = book.publish_date;
-}
-
-function deleteBook() { // use fetch command to delete book
-    var requestOptions = {
-        method: 'DELETE',
-        redirect: 'follow'
-    };
-    var delURL = "./library/deletebook/" + ISBNvalue; // string concatenation with isbn val
-
-
-    fetch(delURL, requestOptions)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
 }
 
 
