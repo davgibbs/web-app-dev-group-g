@@ -54,27 +54,20 @@ public class BookController {
   //This is a delete request which deletes the entry under specified id value
   @CrossOrigin(origins = "*")
   @PreAuthorize("hasRole('ADMIN')")
-  @DeleteMapping("/deletebook/{isbn}")
-  public void deletebook(
-      @PathVariable(value = "isbn") int id)
-  {
+  @DeleteMapping("/deletebook/{id}")
+  public void deletebook(@PathVariable(value = "id") int id) {
       bookService.deleteBook(id);
   }
 
   //This is a put request which modifies the book entry
   @CrossOrigin(origins = "*")
   @PreAuthorize("hasRole('ADMIN')")
-  @PutMapping("/modifybook/{isbn}")
-  public ResponseEntity<Book> modifybook(@RequestBody @Valid Book book, 
-		  @PathVariable(value="isbn") int isbn)
-  {	
-	  var bookid = bookService.getBookByIsbn(isbn).getId();
-	  book.setId(bookid);
-
-	  return new ResponseEntity<Book>(bookService.modifyBook(book),HttpStatus.OK);
+  @PutMapping("/modifybook/{id}")
+  public ResponseEntity<Book> modifybook(@RequestBody @Valid Book book, @PathVariable(value="id") int id) {	
+	  return new ResponseEntity<Book>(bookService.modifyBook(id, book), HttpStatus.OK);
   }
 
-  //Returns book by entered book id (isbn number)
+  //Returns book by entered book id
   @CrossOrigin(origins = "*")
   @GetMapping("/getbook/{id}") 
   public ResponseEntity<Book> getBookById(@PathVariable(value="id") int id){

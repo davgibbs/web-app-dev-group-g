@@ -45,9 +45,7 @@ public class RecordController {
 	  
 	  @CrossOrigin(origins = "*")
 	  @GetMapping("/borrow/{id}") // POST to add to all fields within libraryrecords database
-	  public LibraryRecord add(
-			  @RequestHeader (value="Authorization") String authorizationHeader,
-			  @PathVariable(value = "id") int id){
+	  public LibraryRecord add(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "id") int id){
 
 	      String token = authorizationHeader.substring(7);
 	      //System.out.println(token);
@@ -67,11 +65,11 @@ public class RecordController {
 		  recordService.add(record);
 		  Book b = bookService.getBookById(id);
 		  // b.setAvailable(false);
-		  bookService.modifyBook(b);
+		  bookService.modifyBook(id, b);
 		  return record;
 	  }
 
-	  //Returns record by entered record id (isbn number)
+	  //Returns record by entered record id
 	  @CrossOrigin(origins = "*")
 	  @GetMapping("/getrecord/{id}") 
 	  public LibraryRecord getRecordById(
@@ -100,16 +98,14 @@ public class RecordController {
 		  
 	  }
 
-	  @CrossOrigin(origins = "*")
-	  @PreAuthorize("hasRole('ADMIN')")	  
-	  @DeleteMapping("/return/{bookid}")
-	  public void deleterecord(
-	      @PathVariable(value = "bookid") int isbn)
-	  {              
-	  Book b = bookService.getBookByIsbn(isbn);
-	  // b.setAvailable(true); todo fix
-	  var book = bookService.modifyBook(b);	  
-	  recordService.deleterecord(book.getISBN());
-	  }
+//	  @CrossOrigin(origins = "*")
+//	  @PreAuthorize("hasRole('ADMIN')")	  
+//	  @DeleteMapping("/return/{bookid}")
+//	  public void deleterecord(@PathVariable(value = "bookid") int isbn) {              
+//	  //Book b = bookService.getBookByIsbn(isbn);
+//	  // b.setAvailable(true); todo fix
+//	  //var book = bookService.modifyBook(b);	  
+//	  //recordService.deleterecord(book.getISBN());
+//	  }
 	  
 }

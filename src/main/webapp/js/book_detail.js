@@ -19,6 +19,7 @@ $(document).ready(function(){
 	 });
 	 getRequest.done(function( data ) {
 		 console.log(data);
+		 
 		 $('#title').text(data.title);
 		 $('#book-description').text(data.description);
 		 $('#book-image').attr("src", data.image_path);

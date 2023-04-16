@@ -8,13 +8,17 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Column;
 
 	@Entity(name="library_records") // This tells Hibernate to make a table out of this class
 	public class LibraryRecord  {
 	  @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
 	  private Integer id;
-	  private Integer member_id;
+	  
+      @Column(name="member_id")
+	  private Integer memberid;
+      
 	  private Integer book_id;
 	  @JsonFormat(pattern="yyyy-MM-dd")	//Tell Jackson to format the date to only provide date info
 	  private LocalDate borrowed_date;
@@ -26,9 +30,9 @@ import jakarta.persistence.Id;
 		  
 	  }
 	 
-	  public LibraryRecord(Integer id, Integer member_id, Integer book_id, LocalDate borrowed_date, LocalDate due_date, Boolean is_returned) {
+	  public LibraryRecord(Integer id, Integer memberid, Integer book_id, LocalDate borrowed_date, LocalDate due_date, Boolean is_returned) {
 		  this.id = id;
-		  this.member_id = member_id;
+		  this.memberid = memberid;
 		  this.book_id = book_id;
 		  this.borrowed_date = borrowed_date;
 		  this.due_date = due_date;
@@ -44,12 +48,12 @@ import jakarta.persistence.Id;
 	    this.book_id = book_id;
 	  }
 
-	  public Integer getMemberid() {
-	    return member_id;
+	  public Integer getMemberId() {
+	    return memberid;
 	  }
 
-	  public void setMemberid(Integer member) {
-	    this.member_id = member;
+	  public void setMemberId(Integer member) {
+	    this.memberid = member;
 	  }
 	  
 	  public Integer getId() {
