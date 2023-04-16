@@ -6,7 +6,7 @@ const requestOptions = {
 };
 
 function getUserInfo(id){
-    fetch("http://localhost:8080/library/getmember/${id}",requestOptions)
+    fetch("./library/getmember/${id}",requestOptions)
     .then(response => response.json())
     .then(result =>{
         document.getElementById("name").innerHTML = result.name;

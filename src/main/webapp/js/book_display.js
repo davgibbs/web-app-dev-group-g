@@ -3,7 +3,7 @@ const requestOptions = {
     redirect: 'follow'
 };
 
-fetch("http://localhost:8080/library/getallbooks", requestOptions) // get all books, then pass them to row handler to display book in table
+fetch("./library/getallbooks", requestOptions) // get all books, then pass them to row handler to display book in table
     .then(response => response.json())
     .then(result => {
         for (const i of result) {
@@ -17,8 +17,7 @@ function rowHandler(data){ // format information form fetch command into table
     let row = table.insertRow();
 
     row.insertCell(0).innerHTML = data.isbn;
-    row.insertCell(1).innerHTML = `<a href="/admin_bookview.html?bookisbn=${data.isbn}" style="color: black; text-decoration: none;">${data.title}</a>`
+    row.insertCell(1).innerHTML = `<a href="/admin_bookview.html?bookid=${data.id}" style="color: black; text-decoration: none;">${data.title}</a>`
     row.insertCell(2).innerHTML = data.author;
-    row.insertCell(3).innerHTML = data.date;
-    row.insertCell(4).innerHTML = data.available;
+    row.insertCell(3).innerHTML = data.publish_date;
 }

@@ -26,14 +26,17 @@ function searchTitle(){
 	//const selectVal = document.getElementById("searchType").value;
 	// may choose author
 
+    // Get token from main.js
+    const jwtBearerToken = getToken();
+
     const url = "./library/getbooksByTitle?title=" + title;	 
 	var getting = $.ajax({
         type: 'get',
         url: url,
         contentType: "application/json; charset=utf-8",
-        //beforeSend: function (xhr){ 
-        //	xhr.setRequestHeader('Authorization', 'Bearer ' + jwtBearerToken); 
-    	//},
+        beforeSend: function (xhr){ 
+        	xhr.setRequestHeader('Authorization', 'Bearer ' + jwtBearerToken); 
+    	},
     });
     
     
@@ -73,11 +76,8 @@ function searchTitle(){
 	         
 	         console.log("Getting details for book id: " + bookId);
 	         window.location.href = "./book-detail.html?id=" + bookId;
-		  })
-	      
+		  })	      
 	  }
-	  
-	  
 	})
 }
 

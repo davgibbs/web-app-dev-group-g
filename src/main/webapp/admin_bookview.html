@@ -6,8 +6,8 @@
   <!-- Loads the icons used in the navigation bar and footer -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!--  Loads the css file -->
-  <link rel="stylesheet" href="/css/admin_styles.css">
-  <link rel="stylesheet" href="/css/admin_forms.css">
+  <link rel="stylesheet" href="./css/admin_styles.css">
+  <link rel="stylesheet" href="./css/admin_forms.css">
   <!--  jquery -->
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 </head>
@@ -15,10 +15,12 @@
 <body style="background-color:#E1E0D5;">
 <!-- navbar -->
 <div class="topnav">
-  <a href="/index.html"><i class="fa fa-fw fa-home"></i> Home</a>
-  <a href="/admin.html">Admin</a>
-  <a href="/admin_records.html">Records</a>
-  <a href="/admin.html">Logout</a>
+  <a href="./index.html"><img src="images/logo.png" alt="Library Logo" height="60"></a>
+  <a href="./index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  <a href="./books.html"> Books</a>
+  <a class="active" href="./admin.html">Admin</a>
+  <a href="./admin_records.html">Records</a>
+  <a href="./admin.html">Logout</a>
 </div>
 
 <!-- form -->
@@ -31,7 +33,7 @@
 <div class="admin-main-wrapper">
   <div class="admin-form-wrapper">
 
-    <form>
+    <form id="update-delete-book">
       <!-- input fields -->
       <div class="admin-mb-3">
         <label for="isbn" class="admin-form-label">
@@ -53,28 +55,28 @@
       </div>
       <div class="admin-mb-3">
         <label for="date" class="admin-form-label">
-          Date
+          Publish Date
         </label>
-        <input type="date" name="date" id="date" class="admin-form-input" />
+        <input type="date" name="date_publish" id="date_publish" class="admin-form-input" />
       </div>
       <div class="admin-mb-3">
         <label for="availability" class="admin-form-label">
-          Availability
+          Description
         </label>
-        <input type="text" name="availability" id="availability" class="admin-form-input" />
+        <textarea id="description" name="description" rows="6" cols="50" class="admin-form-input"></textarea>
       </div>
       <!-- action buttons -->
       <center>
       <span class="buttonContainer">
-        <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;">Back</a>
-        <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;" onclick="updateBook()">Update</a>
-        <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none;" onclick="deleteBook()">Delete</a>
+        <a href="/admin.html" class="admin-btn" style="color: white; text-decoration: none; padding:22px 30px">Back</a>
+        <input type="submit" class="admin-btn" style="color: white; text-decoration: none;" id="updateBook" value="Update">
+        <input type="submit" class="admin-btn" style="color: white; text-decoration: none;" id="DeleteBook" value="Delete">
       </span>
       </center>
     </form>
   </div>
   <!-- include js -->
-  <script src="/js/bookview_functions.js"></script>
+  <script src="./js/bookview_functions.js"></script>
 </div>
 </body>
 

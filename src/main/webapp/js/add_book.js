@@ -1,26 +1,44 @@
-function doFetch() // function that utilizes fetch command add book to library
-{
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
+/* When the document is ready then add watchers for different events */
+$(document).ready(function(){
+	
+
+  /* Watch for a submit event for the main registration form */
+  $("#form-new-book").submit(function(event) {
+	  
+	console.log("Handler for .submit() called new book.");
+    event.preventDefault(); 
 
     var raw = JSON.stringify({ // create book
-        "date": document.getElementById('date').value,
+        "publish_date": document.getElementById('publish-date').value,
         "author": document.getElementById('author').value,
-        "available": document.getElementById('availability').value,
-        "image": null,
+        "description": document.getElementById('description').value,
         "isbn": document.getElementById('isbn').value,
         "title": document.getElementById('title').value
     });
+    
+    // Get token from main.js
+    const jwtBearerToken = getToken();
 
-    var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        body: raw,
-        redirect: 'follow'
-    };
+     const url = "./library/addbook";	 
+	 var posting = $.ajax({
+         type: 'post',
+         url: url,
+         data: raw,
+         contentType: "application/json; charset=utf-8",
+         beforeSend: function (xhr){ 
+        	xhr.setRequestHeader('Authorization', 'Bearer ' + jwtBearerToken); 
+    	 },
+     });
 
-    fetch("http://localhost:8080/library/addbook", requestOptions) // fetch command to add
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-}
+	posting.done(function( data ) {
+	  alert("Successfully added new book");
+	  window.location.href = "./admin.html"
+	  
+	})
+	  
+	posting.fail(function( data ) {
+	  console.log(data);
+	})
+  
+  })
+})
