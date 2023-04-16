@@ -32,12 +32,13 @@ $(document).ready(function(){
 
 	posting.done(function( data ) {
 	  alert("Successfully added new book");
-	  window.location.href = "./admin.html"
-	  
+	  window.location.href = "./admin.html"	  
 	})
 	  
 	posting.fail(function( data ) {
 	  console.log(data);
+	  alert("Failed to add new book");
+	  window.location.href = "./admin.html"	 
 	})
   
   })
