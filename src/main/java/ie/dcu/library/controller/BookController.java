@@ -76,10 +76,8 @@ public class BookController {
   //Returns book by entered book id (isbn number)
   @CrossOrigin(origins = "*")
   @GetMapping("/getbook/{id}") 
-  public ResponseEntity<Book> getBookById(
-      @PathVariable(value="id") int id)
-  {
-      return new ResponseEntity<Book>(bookService.getBookByIsbn(id),HttpStatus.OK);
+  public ResponseEntity<Book> getBookById(@PathVariable(value="id") int id){
+      return new ResponseEntity<Book>(bookService.getBookById(id), HttpStatus.OK);
   }
   
   //Returns all books
@@ -87,7 +85,6 @@ public class BookController {
   public @ResponseBody Iterable<Book> getAllBooks() {
     return bookService.getAllBooks();
   }
-
   
   @GetMapping(path="/getbooksByAuthor")
   public ResponseEntity<List<Book>> getBooksByAuthor(@RequestParam String author){

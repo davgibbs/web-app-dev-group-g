@@ -56,7 +56,7 @@ public class UserService implements UserDetailsService {
     }
 
     public List<Member> listUsersByRole(RoleName roleName) {
-        List<MemberEntity> entitiesByRolesName = userEntityRepository.findMemberEntitiesByRoles_rolename(roleName);
+        List<MemberEntity> entitiesByRolesName = userEntityRepository.findMemberEntitiesByRoles_name(roleName);
         return mapper.mapList(entitiesByRolesName);
     }
 
@@ -98,7 +98,7 @@ public class UserService implements UserDetailsService {
         List<GrantedAuthority> authorities
                 = new ArrayList<>();
         for (RoleEntity role: roles) {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getRolename().name()));
+            authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getName().name()));
         }
 
         return authorities;

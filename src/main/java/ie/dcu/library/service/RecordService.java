@@ -29,11 +29,11 @@ public class RecordService {
       return recordsRepository.findAll();
     }
  
-    //delete record using isbn
-    public void deleterecord(int isbn)
+    //delete record using id
+    public void deleterecord(int id)
     {
-    	var record = recordsRepository.findByIsbn(isbn);
-    	recordsRepository.deleteById(record.getRecordid());
+    	var record = recordsRepository.findById(id);
+    	recordsRepository.deleteById(record.getId());
     }
 	
 }

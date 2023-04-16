@@ -33,9 +33,9 @@ public class MemberEntity {
 	            CascadeType.MERGE
 	    })
 	    @JoinTable(
-	            name = "user_role",
+	            name = "member_role",
 	            joinColumns = @JoinColumn(
-	                    name = "user_id", referencedColumnName = "id"),
+	                    name = "member_id", referencedColumnName = "id"),
 	            inverseJoinColumns = @JoinColumn(
 	                    name = "role_id", referencedColumnName = "id"))
 	    private Collection<RoleEntity> roles = new ArrayList<>();

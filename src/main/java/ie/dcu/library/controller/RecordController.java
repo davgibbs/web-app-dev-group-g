@@ -44,10 +44,10 @@ public class RecordController {
 	  }
 	  
 	  @CrossOrigin(origins = "*")
-	  @GetMapping("/borrow/{isbn}") // POST to add to all fields within libraryrecords database
+	  @GetMapping("/borrow/{id}") // POST to add to all fields within libraryrecords database
 	  public LibraryRecord add(
 			  @RequestHeader (value="Authorization") String authorizationHeader,
-			  @PathVariable(value = "isbn") int isbn){
+			  @PathVariable(value = "id") int id){
 
 	      String token = authorizationHeader.substring(7);
 	      //System.out.println(token);
@@ -60,13 +60,13 @@ public class RecordController {
 	      
 	      Long memberid = userService.getId(email);
 	      record.setMemberid(memberid.intValue());
-	      record.setISBN(isbn);
+	      record.setBookId(id);
 	      record.setBorrowed_date(borrow_date);
 	      record.setDue_date(due_date);
 	      
 		  recordService.add(record);
-		  Book b = bookService.getBookByIsbn(isbn);
-		  b.setAvailable(false);
+		  Book b = bookService.getBookById(id);
+		  // b.setAvailable(false);
 		  bookService.modifyBook(b);
 		  return record;
 	  }
@@ -93,7 +93,7 @@ public class RecordController {
 	      @PathVariable(value = "bookid") int isbn)
 	  {              
 	  Book b = bookService.getBookByIsbn(isbn);
-	  b.setAvailable(true);
+	  // b.setAvailable(true); todo fix
 	  var book = bookService.modifyBook(b);	  
 	  recordService.deleterecord(book.getISBN());
 	  }

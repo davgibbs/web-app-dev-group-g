@@ -74,8 +74,9 @@ public class WebSecurityConfig  {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeHttpRequests(authorize ->
                         authorize.requestMatchers("/auth/*").permitAll()
-                        		 .requestMatchers("/", "/auth/*", "/*.html", "/css/*", "/js/*", "/images/*", "/videos/*").permitAll()
+                        		 .requestMatchers("/", "/auth/*", "/*.html", "/css/*", "/js/*", "/images/*", "/videos/*", "*.ico", "*.png").permitAll()
                         		 .requestMatchers("/library/*").permitAll()
+                        		 .requestMatchers("/library/**").permitAll()
                                  .anyRequest().authenticated())
                 .authenticationProvider(authenticationProvider());
 

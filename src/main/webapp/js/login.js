@@ -1,6 +1,8 @@
 
 function CheckPassword() {
-    var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    //var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    
+    var check = /^[a-z]{1,10}$/;
     if (document.querySelector('#signup_form').style.display == 'block') {
         var psw = document.getElementById('psw_signup');
     } else {
@@ -50,28 +52,42 @@ const requestOptionsGet = {
 
 //check for uname and psw
 function checkLogin() {
-    //variable selection   
-    var inputUname = document.getElementById('uname_login');
-    var inputPsw = document.getElementById('psw_login');
-    //fetch
-    fetch("http://localhost:8080/library/getlogin/${inputUname}", requestOptionsGet)
-        .then(response => response.json())
-        .then(result => {
-            if (inputUname.value == result.uname) {
-                if (inputPsw.value = result.pass) {
-                    window.sessionStorage.setItem('id', result.loginid);
-                    return true;
-                } else {
-                    psw.style.backgroundColor = "rgba(223, 100, 100, 0.603)";
-                    document.getElementById("psw_p").innerHTML = "Password does not correspond to the username";
-                    return false;
-                }
-            } else {
-                document.getElementById("uname_p").innerHTML = "Username does not exist please sign up or try a different username";
-                return false;
-            }
-        })
-        .catch(error => console.log('error', error));
+    //variable selection
+    var username = $("#uname_login").val();
+    var password = $("#psw_login").val();
+    
+    details = {}
+    details["username"] = username;  // Set the username
+    details["password"] = password;  // Set the username
+    const url = "./auth/login";
+
+    var posting = $.ajax({
+        type: 'POST',
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(details)
+    });
+   
+    posting.done(function( data ) {
+		console.log("success");
+		console.log(data);
+		var rolesString = JSON.stringify(data.roles);
+        document.cookie = "userRoles=" + encodeURIComponent(rolesString) + "; path=/"
+        var usernameString = data.username;
+        document.cookie = "username=" + usernameString + "; path=/"
+           
+        const token = data.token; // assuming the token is returned as a property named 'token' in the response
+           
+        document.cookie = `token=${token}; path=/`; // store the token in a cookie named 'token'
+        window.location.href= "./books.html"
+		return true;
+	})
+	
+	posting.fail(function(message) {
+		console.log(message.statusText);			
+		document.getElementById("psw_p").innerHTML = "Password does not correspond to the username";
+		return false;
+	})  
 }
 
 

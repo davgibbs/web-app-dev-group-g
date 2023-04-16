@@ -84,7 +84,7 @@ public class BookService {
 
         bookEntity.setTitle(book.getTitle());        	
         bookEntity.setAuthor(book.getAuthor());
-        bookEntity.setAvailable(book.getAvailable());
+        bookEntity.setDescription(book.getDescription());
         bookEntity.setPublish_date(book.getPublish_date());
         bookEntity.setImage_path(book.getImage_path());
         libraryRepository.save(bookEntity);
@@ -99,6 +99,15 @@ public class BookService {
 				throw new LibraryServiceException("Book not found", BOOK_NOT_FOUND);
 			}
 	      return libraryRepository.findByIsbn(isbn);
+	  }
+	  
+	  public Book getBookById(int id)
+	  {
+			boolean exists = libraryRepository.existsById(id);
+			if(!exists) {
+				throw new LibraryServiceException("Book not found", BOOK_NOT_FOUND);
+			}
+	      return libraryRepository.findById(id);
 	  }
 
 }

@@ -15,7 +15,7 @@ import ie.dcu.library.model.LibraryRecord;
 public interface RecordsRepository
 	extends JpaRepository<LibraryRecord, Integer>{
   
-	LibraryRecord findByIsbn(int isbn);
+	// LibraryRecord findByIsbn(int isbn);
 	LibraryRecord findById(int id);
     List<LibraryRecord> findAll();
     void deleteById(int id);    

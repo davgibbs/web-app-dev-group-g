@@ -13,52 +13,52 @@ import jakarta.persistence.Id;
 	public class LibraryRecord  {
 	  @Id
       @GeneratedValue(strategy = GenerationType.IDENTITY)
-	  private Integer recordid;
-	  private Integer memberid;
-	  private Integer isbn;
+	  private Integer id;
+	  private Integer member_id;
+	  private Integer book_id;
 	  @JsonFormat(pattern="yyyy-MM-dd")	//Tell Jackson to format the date to only provide date info
 	  private LocalDate borrowed_date;
 	  @JsonFormat(pattern="yyyy-MM-dd")
 	  private LocalDate due_date;
-	  private String overdue;
+	  private Boolean is_returned;
 	  
 	  public LibraryRecord() {
 		  
 	  }
 	 
-	  public LibraryRecord(Integer membid, Integer isbn, LocalDate borrowed_date, LocalDate due_date, String overdue) {
-		//  this.recordid = recid;
-		  this.memberid = membid;
-		  this.isbn = isbn;
+	  public LibraryRecord(Integer id, Integer member_id, Integer book_id, LocalDate borrowed_date, LocalDate due_date, Boolean is_returned) {
+		  this.id = id;
+		  this.member_id = member_id;
+		  this.book_id = book_id;
 		  this.borrowed_date = borrowed_date;
 		  this.due_date = due_date;
-		  this.overdue = overdue;
+		  this.is_returned = is_returned;
 	  }
 
 	  //Getters and Setters	  
-	  public Integer getISBN() {
-	    return isbn;
+	  public Integer getBookId() {
+	    return book_id;
 	  }
 
-	  public void setISBN(Integer id) {
-	    this.isbn = id;
+	  public void setBookId(Integer book_id) {
+	    this.book_id = book_id;
 	  }
 
 	  public Integer getMemberid() {
-	    return memberid;
+	    return member_id;
 	  }
 
 	  public void setMemberid(Integer member) {
-	    this.memberid = member;
+	    this.member_id = member;
 	  }
 	  
-	  public Integer getRecordid() {
-		    return recordid;
-		  }
+	  public Integer getId() {
+		    return id;
+	  }
 
-		  public void setRecordid(Integer recid) {
-		    this.recordid = recid;
-		  }
+	  public void setRecordid(Integer id) {
+		    this.id = id;
+	  }
 	
 	  public LocalDate getBorrowed_date() {
 	    return borrowed_date;
@@ -69,19 +69,19 @@ import jakarta.persistence.Id;
 	  }
 	  
 	  public LocalDate getDue_date() {
-		    return due_date;
-		  }
+	     return due_date;
+	  }
 
 	  public void setDue_date(LocalDate due_date) {
 		this.due_date = due_date;
 		  } 
 	  
-	  public void setOverdue(String overdue) {
-		this.overdue = overdue;
-		  } 
+	  public void setIsReturned(Boolean is_returned) {
+		this.is_returned = is_returned;
+	  } 
 	  
-	  public String getOverdue() {
-		    return overdue;
-		  }
+	  public Boolean getIsReturned() {
+	    return is_returned;
+	  }
 
 }

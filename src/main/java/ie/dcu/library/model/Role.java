@@ -13,6 +13,6 @@ import lombok.Setter;
 public class Role {
 
     private Long id;
-    private RoleName rolename;
+    private RoleName name;
 
 }

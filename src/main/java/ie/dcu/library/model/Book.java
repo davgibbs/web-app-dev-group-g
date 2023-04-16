@@ -20,71 +20,55 @@ public class Book {
   private Integer isbn;
   private String title;
   private String author;
-
-  private boolean available;
   @JsonFormat(pattern="yyyy-MM-dd")	//Tell Jackson to format the date to only provide date info
   private Date publish_date;
-//  private String Customer;
   private String image_path;
-  private String descr;
+  private String description;
   
-  
- public Book() {
-	  
+  public Book() {  
   }
   
-  public Book(Integer id, String title, String author, boolean avail, Date date, String image, String description) {
+  public Book(Integer id, String title, String author, Date date, String image, String description) {
 	  this.isbn = id;
 	  this.title = title;
 	  this.author = author;
-	  this.available = avail;
 	  this.publish_date = date;
-//	  this.Customer = customer;
 	  this.image_path = image;
-	  this.descr = description;
+	  this.description = description;
   }
   
-//Getters and Setters  
-  
+  //Getters and Setters  
   public Integer getId() {
-		return id;
+	return id;
+  }
+
+  public void setId(Integer id) {
+	  this.id = id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
-
-  public Integer getISBN() {
-    return isbn;
-  }
-
-  public void setISBN(Integer id) {
-    this.isbn = id;
-  }
-
-  public String getTitle() {
-    return title;
-  }
-
-  public void setTitle(String title) {
-    this.title = title;
-  }
-
-  public String getAuthor() {
-    return author;
-  }
-
-  public void setAuthor(String author) {
-    this.author = author;
-  }
-  
-  public boolean getAvailable() {
-	    return available;
+	  public Integer getISBN() {
+	    return isbn;
 	  }
-
-   public void setAvailable(boolean available) {
-	this.available = available;
-	  } 
+	
+	  public void setISBN(Integer id) {
+	    this.isbn = id;
+	  }
+	
+	  public String getTitle() {
+	    return title;
+	  }
+	
+	  public void setTitle(String title) {
+	    this.title = title;
+	  }
+	
+	  public String getAuthor() {
+	    return author;
+	  }
+	
+	  public void setAuthor(String author) {
+	    this.author = author;
+	  }
   
     public Date getPublish_date() {
 		return publish_date;
@@ -102,20 +86,11 @@ public class Book {
 		this.image_path = image_path;
 	}
 	
-	public String getDescr() {
-		return descr;
+	public String getDescription() {
+		return description;
 	}
 	
-	public void setDescr(String descr) {
-		this.descr = descr;
+	public void setDescription(String description) {
+		this.description = description;
 	}
-  
-/*  public String getCustomer() {
-	    return Customer;
-	  }
-
-public void setCustomer(String customer) {
-	this.Customer = customer;
-	  } */
-
 }

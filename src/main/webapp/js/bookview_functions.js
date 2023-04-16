@@ -21,12 +21,13 @@ fetch("http://localhost:8080/library/getallbooks", requestOptionsForPopulation) 
     .catch(error => console.log('error', error));
 
 function prepopulate(book){ // insert title and prepopulate the table for ease of editing
+console.log(book)
     document.getElementById("bookViewTitle").innerText = book.title;
     document.getElementById("isbn").value = book.isbn;
     document.getElementById("title").value = book.title;
     document.getElementById("author").value = book.author;
     document.getElementById("availability").value = book.available;
-    document.getElementById("date").value = book.date;
+    document.getElementById("date").value = book.publish_date;
 }
 
 function deleteBook() { // use fetch command to delete book
@@ -71,6 +72,7 @@ function addBook() { // same add book function as before
 }
 
 function updateBook() { // updating a book consists of deleting the old one and adding with the present form content
+// todo add a PUT request
     deleteBook();
     addBook();
 }
