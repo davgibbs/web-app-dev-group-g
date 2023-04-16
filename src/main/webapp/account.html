@@ -5,32 +5,18 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="./styles/nav.css">
-    <link rel="stylesheet" href="./styles/account.css">
+    <link rel="stylesheet" href="./css/nav.css">
+    <link rel="stylesheet" href="./css/account.css">
 
     <title>Account</title>
 </head>
 
 <body>
     <div class="topnav">
-        <a href="Home.html"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="Books.html">Books</a>
-        <a href="login.html">Login</a>
-        <a href="account.html">Account</a>
-
-
-        <div class="search-container">
-            <form onsubmit="searchEngine()">
-                <!-- Dropdown menu where the user selects what the reason they wish to contact us is -->
-                <!-- This is to make it easier for the company when reading the message-->
-                <select id="reason" name="reason">
-                    <option value="Title">Title</option>
-                    <option value="Author">Author</option>
-                </select>
-                <input type="text" placeholder="Search.." name="search" style="margin-left:0px">
-                <button class="searchButton" type="submit"><i class="fa fa-search"></i></button>
-            </form>
-        </div>
+        <a href="./index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+        <a href="./books.html">Books</a>
+        <a href="./login.html">Login</a>
+        <a class="active" href="./account.html">Account</a>
     </div>
 
     <div class="title">
@@ -69,27 +55,26 @@
         <div class="footer-column" style="margin-right:10px">
           <!-- Contact information, incase anyone needs to get in contact -->
           <p style="font-size:18px"><b>CONTACT INFO:</b></p>
-          <p style="margin-top:-5px">Email: isobel.fox4@mail.dcu.ie</p>
+          <p style="margin-top:-5px">Email: library@mail.dcu.ie</p>
            <p style="margin-top:-5px">Tel: +353 8 7123456</p>
         </div>
         <div class="footer-column" style="margin-left:10px">
-          <!-- Links to the buy season ticket, and league/championship tickets websites -->
           <p style="font-size:18px; margin-bottom:20px"><b>ACCOUNT:</b></p>
           <p style="margin-top:-5px">
-            <a href="login.html">Login</a>
+            <a href="./login.html">Login</a>
         </p>
         <p style="margin-top:-5px">
-            <a href="account.html">Account details</a>
+            <a href="./account.html">Account details</a>
         </p>
         </div>
         <div class="footer-column" style="margin-left:10px">
           <!-- Links to the buy season ticket, and league/championship tickets websites -->
           <p style="font-size:18px; margin-bottom:20px"><b>DISCOVER:</b></p>
           <p style="margin-top:-5px">		
-              <a href="Home.html">Home</a>
+              <a href="./home.html">Home</a>
           </p>
           <p style="margin-top:-5px">		
-              <a href="Books.html">Books</a>
+              <a href="./books.html">Books</a>
           </p>
         </div>
       </div>
@@ -103,6 +88,6 @@
     </p>
 </footer>
 
-<script type="text/javascript" src="./scripts/account.js"></script>
+<script type="text/javascript" src="./js/account.js"></script>
 
 </html>

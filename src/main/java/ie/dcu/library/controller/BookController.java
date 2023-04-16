@@ -47,6 +47,7 @@ public class BookController {
   @PreAuthorize("hasRole('ADMIN')")
   @PostMapping("/addbook") // POST to add to all fields within books database (Insert new Book)
   public Book add(@RequestBody Book book) {
+	  System.out.print(book.getAuthor());
 	  return bookService.addBook(book);
   }
 

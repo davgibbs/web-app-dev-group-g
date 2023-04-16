@@ -45,16 +45,17 @@ public class BookService {
 	}
 	
 	public Book addBook(Book book){
-		//System.out.print(book);		
 		if(book.getISBN()==null) {
 			throw new LibraryServiceException("ISBN missing", ISBN_NOT_FOUND);
+		}
+		if (book.getImage_path()== null) {
+			book.setImage_path("./images/book.png");
 		}
 		Book newbook = libraryRepository.save(book);	
 		return newbook;
 	}
 
 	public void deleteBook(int isbn){
-		//System.out.print(id);
 		boolean exists = libraryRepository.existsByIsbn(isbn);
 		if(!exists) {
 			throw new LibraryServiceException("Book not found", BOOK_NOT_FOUND);

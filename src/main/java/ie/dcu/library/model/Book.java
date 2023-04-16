@@ -28,12 +28,13 @@ public class Book {
   public Book() {  
   }
   
-  public Book(Integer id, String title, String author, Date date, String image, String description) {
-	  this.isbn = id;
+  public Book(Integer id, Integer isbn, String title, String author, Date date, String image_path, String description) {
+	  this.id = id;
+	  this.isbn = isbn;
 	  this.title = title;
 	  this.author = author;
 	  this.publish_date = date;
-	  this.image_path = image;
+	  this.image_path = image_path;
 	  this.description = description;
   }
   
@@ -83,6 +84,9 @@ public class Book {
 	}
 	
 	public void setImage_path(String image_path) {
+		if (image_path== null) {
+			image_path = "./images/book.png";
+		}
 		this.image_path = image_path;
 	}
 	

@@ -193,7 +193,7 @@ function signUp() {
     };
 
     //adding to database
-    fetch("http://localhost:8080/library/addmember", requestOptionsAddMember)
+    fetch("./library/addmember", requestOptionsAddMember)
         .then(response => response.text())
         .then(result => console.log(result))
         .catch(error => console.log('error', error));
@@ -205,7 +205,7 @@ function signUp() {
 
     //now that the nex account has been created the id created in the database for the account can be stored in session storage 
     var inputUname = document.getElementById('uname_signup');
-    fetch("http://localhost:8080/library/getlogin/${inputUname}", requestOptionsGet)
+    fetch("./library/getlogin/${inputUname}", requestOptionsGet)
         .then(response => response.json())
         .then(result => {
             window.sessionStorage.setItem('id', result.loginid);
