@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<title>Library</title>
+<head>
+  <!-- Loads the icons used in the navigation bar and footer -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!--  Loads the css file -->
+  <link rel="stylesheet" href="css/style.css">
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  
+  <script src="js/book_detail.js"></script>
+
+</head>
+
+<body style="background-color:#E1E0D5">
+	<div class="topnav">
+		<a href="./index.html"><img src="images/logo.png" alt="Library Logo" height="60"></a>
+  		<a href="./index.html"><i class="fa fa-fw fa-home"></i> Home</a>
+  		<a class="active" href="./books.html">Books</a>
+  		<a href="./login.html">Login</a>
+  		<a href="./admin.html"> Admin</a>
+  		<a href="./admin_records.html">Records</a>
+
+	</div>
+
+	<div class="search-content">
+    <div class="row">
+      <div class="column" style="width:26%; height:100%; border-radius:7px; border:solid 0.5px #9F9F9F">
+        <img id="book-image" src="" style="height:30%; width:100%; padding:10px">
+        <button id="checkOut" type="submit" style="background-color:#8BBF7B;">Borrow</button>
+        <a href="./books.html">
+          <button style="background-color:#7FBFC9; margin-top:5px;">Back</button>
+        </a>
+      </div>
+      <div class="column" style="width:65%; height:100%; margin-left:20px">
+        <h4 id="date-published" style="color:#9F9F9F"></h4>
+		    <h1 id="title"></h1>
+		    <hr></hr>
+	      <h3 id="author" style="color:#6B6B6B"></h3>
+        <h4 id="available" style="color:#404040">Currently Available</h4>
+        <hr style="border:solid 0.5px #EDEDED"></hr>
+        <h4>About the book</h4>
+        <p id="book-description"></p>
+      </div>
+	 </div>
+  </div>
+</body>
+
+<!-- This is the footer which is on each page it has important infomation and what I as a Hurling fan imagine the most looked for information -->
+<!-- This is done for easy access to the information-->
+<footer>
+  <div class="footer-content">
+    <div class="footer-row">
+      <div class="footer-column" style="margin-right:10px">
+        <!-- Contact information, incase anyone needs to get in contact -->
+        <p style="font-size:18px"><b>CONTACT INFO:</b></p>
+        <p style="margin-top:-5px">Email: library@mail.dcu.ie</p>
+         <p style="margin-top:-5px">Tel: +353 8 7123456</p>
+      </div>
+      <div class="footer-column" style="margin-left:10px">
+        <p style="font-size:18px; margin-bottom:20px"><b>ACCOUNT:</b></p>
+        <p style="margin-top:-5px">
+        	<a href="./login.html">Login</a>
+        </p>
+      </div>
+      <div class="footer-column" style="margin-left:10px">
+        <p style="font-size:18px; margin-bottom:20px"><b>DISCOVER:</b></p>
+        <p style="margin-top:-5px">		
+        	<a href="./index.html">Home</a>
+        </p>
+        <p style="margin-top:-5px">		
+        	<a href="./books.html">Books</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- draws a line -->
+  <hr class="line" style="margin-bottom:20px">
+  <!-- On bottom on the left and right has signature and copywrite-->
+  <p style="text-align:center;"><i class="fa fa-copyright"></i>
+    2023 Library books IE <br>
+  </p>
+</footer>
+</html>

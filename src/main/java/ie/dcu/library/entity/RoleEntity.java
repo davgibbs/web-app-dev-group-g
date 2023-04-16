@@ -20,10 +20,10 @@ public class RoleEntity {
 
         @Column(nullable = false)
         @Enumerated(EnumType.STRING)
-        private RoleName rolename;
+        private RoleName name;
 
 		@ManyToMany(mappedBy = "roles")
-        private Collection<MemberEntity> users;
+        private Collection<MemberEntity> members;
 
         public RoleEntity() {
         }
@@ -36,18 +36,18 @@ public class RoleEntity {
             this.id = id;
         }
 
-        public RoleName getRolename() {
-			return rolename;
+        public RoleName getName() {
+			return name;
 		}
 
-		public void setRolename(RoleName rolename) {
-			this.rolename = rolename;
+		public void setName(RoleName name) {
+			this.name = name;
 		}
         public Collection<MemberEntity> getUsers() {
-            return users;
+            return members;
         }
 
-        public void setUsers(Collection<MemberEntity> users) {
-            this.users = users;
+        public void setMembers(Collection<MemberEntity> members) {
+            this.members = members;
         }
 }

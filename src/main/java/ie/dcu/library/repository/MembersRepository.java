@@ -20,7 +20,7 @@ public interface MembersRepository
   //List<Members> findAll();
   //void deleteById(int id);
   
-  List<MemberEntity> findMemberEntitiesByRoles_rolename(RoleName name);
+  List<MemberEntity> findMemberEntitiesByRoles_name(RoleName name);
   Optional<MemberEntity> findMemberEntityByUsernameOrEmail(String username, String email);
   Optional<MemberEntity> findMemberEntityByUsername(String username);
   Optional<MemberEntity> findMemberEntityByEmail(String email);

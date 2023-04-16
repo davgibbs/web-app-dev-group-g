@@ -22,7 +22,7 @@ public class RoleService {
     }
 
     public RoleEntity findRoleByRolename(RoleName roleName){
-        return  roleEntityRepository.findRoleEntityByRolename(roleName)
+        return  roleEntityRepository.findRoleEntityByName(roleName)
                 .orElseThrow(() -> new LibraryServiceException(
                         String.format("Role %s does not exist", roleName.name()), ErrorCode.ROLE_NOT_FOUND)
                 );
