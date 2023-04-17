@@ -1,12 +1,12 @@
 
 function CheckPassword() {
-    //var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-    
+    // var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
     var check = /^[a-z]{1,10}$/;
     if (document.querySelector('#signup_form').style.display == 'block') {
         var psw = document.getElementById('psw_signup');
     } else {
-        var psw = document.getElementById('psw_login')
+        var psw = document.getElementById('psw_login');
     }
 
     //check if the password has 6-20 characters with one digit, one uppercase and one lowercase letter
@@ -40,6 +40,24 @@ function CheckUsername() {
     }
 }
 
+/*  ///////////////////////////////
+       Check for admin
+/////////////////////////////// */
+function isAdmin() {
+    var uname = document.getElementById('uname_login').value;
+    var psw = document.getElementById('psw_login').value;
+
+    //this is a bypass to the check of the database 
+    if (uname == "admin" && psw == "secret") {
+        document.cookie = "isAdmin=true; path=/"; //store isAdmin value in cookie
+        //I am unsure if this is correct
+        return true;
+    }
+    else {
+        //no need to store in cookie that user is not admin this is default state
+        return false;
+    }
+}
 
 
 /*  ///////////////////////////////
@@ -55,7 +73,7 @@ function checkLogin() {
     //variable selection
     var username = $("#uname_login").val();
     var password = $("#psw_login").val();
-    
+
     details = {}
     details["username"] = username;  // Set the username
     details["password"] = password;  // Set the username
@@ -67,27 +85,27 @@ function checkLogin() {
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(details)
     });
-   
-    posting.done(function( data ) {
-		console.log("success");
-		console.log(data);
-		var rolesString = JSON.stringify(data.roles);
+
+    posting.done(function (data) {
+        console.log("success");
+        console.log(data);
+        var rolesString = JSON.stringify(data.roles);
         document.cookie = "userRoles=" + encodeURIComponent(rolesString) + "; path=/"
         var usernameString = data.username;
         document.cookie = "username=" + usernameString + "; path=/"
-           
+
         const token = data.token; // assuming the token is returned as a property named 'token' in the response
-           
+
         document.cookie = `token=${token}; path=/`; // store the token in a cookie named 'token'
-        window.location.href= "./books.html"
-		return true;
-	})
-	
-	posting.fail(function(message) {
-		console.log(message.statusText);			
-		document.getElementById("psw_p").innerHTML = "Password does not correspond to the username";
-		return false;
-	})  
+        window.location.href = "./books.html"
+        return true;
+    })
+
+    posting.fail(function (message) {
+        console.log(message.statusText);
+        document.getElementById("psw_p").innerHTML = "Password does not correspond to the username";
+        return false;
+    })
 }
 
 
@@ -98,11 +116,11 @@ document.getElementById("submit_login").addEventListener('click', event => {
     //on click of the submit button verifies that all conditions are respected
     event.preventDefault();
 
-    var t1 = CheckUsername();
-    var t2 = CheckPassword();
-
-    const psw = document.login.psw;
-    if (t1 && t2) {
+    if (isAdmin()) {
+        //bypass database check and store in cookie "isAdmin=true"
+        document.querySelector('#login').submit();
+    }
+    else if (CheckUsername() && CheckPassword()) {
         var final = checkLogin();
         if (final) {
             document.querySelector('#login').submit();

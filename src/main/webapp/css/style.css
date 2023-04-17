@@ -403,3 +403,9 @@ footer {
   bottom: 0;
   width: 100%;  
 }
+
+
+/* Hide admin pages */
+#admin {
+  display: none;
+}

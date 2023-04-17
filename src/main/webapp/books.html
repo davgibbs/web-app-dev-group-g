@@ -12,15 +12,15 @@
 	<script src="./js/searchBooks.js"></script>
 </head>
 <body style="background-color:#E1E0D5">
-	<div class="topnav">
+    <div class="topnav">
 		<a href="./index.html"><img src="images/logo.png" alt="Library Logo" height="60"></a>
   		<a href="./index.html"><i class="fa fa-fw fa-home"></i> Home</a>
-  		<a class="active" href="./books.html"><i class="fa fa-fw fa-book"></i> Books</a>
-  	    <a href="./account.html"><i class="fa fa-fw fa-shopping-cart"></i> Account</a>
-  		<a href="./admin.html"><i class="fa fa-fw fa-cog"></i> Admin</a>
-  		<a href="./admin_records.html"><i class="fa fa-fw fa-database"></i> Records</a>
-  		<a class="topnav-right" href="./login.html"><i class="fa fa-fw fa-user"></i> Login</a>
-	</div>
+  		<a href="./books.html"><i class="fa fa-fw fa-book"></i>Books</a>
+  	    <a class="active" href="./account.html"><i class="fa fa-fw fa-shopping-cart"></i>Account</a>
+  		<a href="./admin.html" id="admin"><i class="fa fa-fw fa-cog"></i>Admin</a>
+  		<a href="./admin_records.html" id="admin"><i class="fa fa-fw fa-database"></i>Records</a>
+  		<a class="topnav-right" href="./login.html"><i class="fa fa-fw fa-user"></i>Login</a>
+    </div>
 
 	<div class="search-content">
 		<h1 style="color:#6B6B6B">Search books</h1>
@@ -79,6 +79,5 @@
 </footer>
 </html>
 
-<script>
+<script type="text/javascript" src="./js/isAdmin.js"></script>
 
-</script>
