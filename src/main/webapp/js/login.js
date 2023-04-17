@@ -2,7 +2,7 @@
 function CheckPassword() {
     // var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     
-    var check = /^.{5,10}$/;  // Check for between 5 and 10 characters
+    var check = /^.{5,30}$/;  // Check for between 5 and 30 characters
     if (document.querySelector('#signup_form').style.display == 'block') {
         var psw = document.getElementById('psw_signup');
     } else {
@@ -21,7 +21,7 @@ function CheckPassword() {
 }
 
 function CheckUsername() {
-    var check = /^.{3,20}$/;
+    var check = /^.{3,30}$/;
     //username must be between 3 to 20 characters long, it can be anything 
     if (document.querySelector('#signup_form').style.display == 'block') {
         var uname = document.getElementById('uname_signup');
@@ -116,6 +116,8 @@ document.getElementById("submit_login").addEventListener('click', event => {
         More tests for signup
 /////////////////////////////// */
 function Checkform(id, reg) {
+	console.log(id)
+	console.log(reg)
     const value = document.querySelector(id).value; //gives the value inside the form to "value"
 
     if (value.length == 0) {
@@ -189,7 +191,7 @@ function signUp() {
 document.getElementById("submit_signup").addEventListener('click', event => {
     //on click of the submit button verifies that all conditions are respected
     event.preventDefault();
-    var t1 = Checkform('#name', /^\w[a-zA-Z]/); //format for name can accept composed names
+    var t1 = Checkform('#firstname', /^\w[a-zA-Z]/); //format for name can accept composed names
     var t2 = Checkform('#surname', /^\w[a-zA-Z]/);
     var t3 = CheckUsername();
     var t4 = Checkform('#email', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/);
