@@ -35,7 +35,7 @@
 #CREATE TABLE group_g_library.books
 #(id INTEGER AUTO_INCREMENT primary key,
 # isbn INTEGER UNIQUE,
-# title VARCHAR(60) NOT NULL,
+# title VARCHAR(60) UNIQUE NOT NULL,
 # author VARCHAR(60) NOT NULL,
 # publish_date DATE NOT NULL,
 # description VARCHAR(2000),

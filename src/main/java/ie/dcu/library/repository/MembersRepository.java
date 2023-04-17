@@ -24,4 +24,5 @@ public interface MembersRepository
   Optional<MemberEntity> findMemberEntityByUsernameOrEmail(String username, String email);
   Optional<MemberEntity> findMemberEntityByUsername(String username);
   Optional<MemberEntity> findMemberEntityByEmail(String email);
+  Optional<MemberEntity> findMemberEntityById(int id);
 }

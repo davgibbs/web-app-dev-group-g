@@ -1,6 +1,5 @@
 /* When the document is ready then add watchers for different events */
 $(document).ready(function(){
-	
 
   /* Watch for a submit event for the main registration form */
   $("#form-new-book").submit(function(event) {
@@ -32,12 +31,13 @@ $(document).ready(function(){
 
 	posting.done(function( data ) {
 	  alert("Successfully added new book");
-	  window.location.href = "./admin.html"
-	  
+	  window.location.href = "./admin.html"	  
 	})
 	  
 	posting.fail(function( data ) {
 	  console.log(data);
+	  alert("Failed to add new book");
+	  window.location.href = "./admin.html"	 
 	})
   
   })

@@ -65,6 +65,10 @@ td:hover {
     color: #f2f2f2;
 }
 
+.topnav .topnav-right {
+  float: right;
+}
+
 /* The topnav hyperlink background colour and the text colour changes when active */
 .topnav a.active {
     background-color: #77746E;

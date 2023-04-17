@@ -19,6 +19,10 @@ public class RecordService {
     public void add(LibraryRecord record) {
     	recordsRepository.save(record);
     }
+    
+    public void save(LibraryRecord record) {
+    	recordsRepository.save(record);
+    }
  
     public LibraryRecord getRecordById(int id)
     {
@@ -42,6 +46,10 @@ public class RecordService {
 
     public Iterable<LibraryRecord> getRecordsbyUser(int memberid){
         return recordsRepository.findByMemberid(memberid);
+    }
+    
+    public Iterable<LibraryRecord> getRecordsbyBook(int bookid){
+        return recordsRepository.findByBookid(bookid);
     }
 
     //delete record using id

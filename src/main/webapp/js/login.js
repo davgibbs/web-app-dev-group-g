@@ -1,12 +1,12 @@
 
 function CheckPassword() {
-    //var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    // var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     
-    var check = /^[a-z]{1,10}$/;
+    var check = /^.{5,30}$/;  // Check for between 5 and 30 characters
     if (document.querySelector('#signup_form').style.display == 'block') {
         var psw = document.getElementById('psw_signup');
     } else {
-        var psw = document.getElementById('psw_login')
+        var psw = document.getElementById('psw_login');
     }
 
     //check if the password has 6-20 characters with one digit, one uppercase and one lowercase letter
@@ -21,7 +21,7 @@ function CheckPassword() {
 }
 
 function CheckUsername() {
-    var check = /^.{3,20}$/;
+    var check = /^.{3,30}$/;
     //username must be between 3 to 20 characters long, it can be anything 
     if (document.querySelector('#signup_form').style.display == 'block') {
         var uname = document.getElementById('uname_signup');
@@ -116,6 +116,8 @@ document.getElementById("submit_login").addEventListener('click', event => {
         More tests for signup
 /////////////////////////////// */
 function Checkform(id, reg) {
+	console.log(id)
+	console.log(reg)
     const value = document.querySelector(id).value; //gives the value inside the form to "value"
 
     if (value.length == 0) {
@@ -149,67 +151,35 @@ function Checkform(id, reg) {
        add signup to database 
 /////////////////////////////// */
 function signUp() {
-    //variable selection
-    var inputUname = document.getElementById('uname_signup');
+    details = {}
+    details["username"] = document.getElementById('uname_signup').value;  // Set the username
+    details["password"] = document.getElementById("psw_signup").value;  // Set the password
+    details["firstname"] = document.getElementById("firstname").value;  // Set the first name
+    details["email"] = document.getElementById("email").value;  // Set the email
+    details["surname"] = document.getElementById("surname").value;  // Set the surname
+    const url = "./auth/signup";
 
-    //Check that uname not already in database
-    fetch("http://localhost:8080/library/getlogin", requestOptionsGet)
-        .then(response => response.json())
-        .then(result => {
-            for (const data of result) {
-                if (data.uname == inputUname) {
-                    document.getElementById("uname_ps").innerHTML = "Username already exists";
-                    return false;
-                }
-            }
-        })
-        .catch(error => console.log('error', error));
-
-    //create Json files for adding to database
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-
-    var member = JSON.stringify({ // create member
-        "name": document.getElementById("name").value,
-        "surname": document.getElementById("surname").value,
-        "email": document.getElementById("email").value
+    var signuppost = $.ajax({
+        type: 'POST',
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(details)
     });
-    var login = JSON.stringify({ // create login
-        "username": inputUname.value,
-        "pass": document.getElementById("psw").value,
-    });
-
-    var requestOptionsAddMember = {
-        method: 'POST',
-        headers: myHeaders,
-        body: member,
-        redirect: 'follow'
-    };
-    var requestOptionsAddLogin = {
-        method: 'POST',
-        headers: myHeaders,
-        body: login,
-        redirect: 'follow'
-    };
-
-    //adding to database
-    fetch("./library/addmember", requestOptionsAddMember)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-    fetch("http://localhost:8080/library/addlogin", requestOptionsAddLogin)
-        .then(response => response.text())
-        .then(result => console.log(result))
-        .catch(error => console.log('error', error));
-
-    //now that the nex account has been created the id created in the database for the account can be stored in session storage 
-    var inputUname = document.getElementById('uname_signup');
-    fetch("./library/getlogin/${inputUname}", requestOptionsGet)
-        .then(response => response.json())
-        .then(result => {
-            window.sessionStorage.setItem('id', result.loginid);
-        })
+   
+    signuppost.done(function( data ) {
+		console.log("success");
+		console.log(data);
+		alert("Signup successful. Please login"); 
+        window.location.href= "./login.html";
+	})
+	
+	signuppost.fail(function(message) {
+		console.log("fail");
+		console.log(message);
+		console.log(message.statusText);			
+		alert("Issue signing up"); 
+		return false;
+	}) 
 
     return true;
 }
@@ -221,7 +191,7 @@ function signUp() {
 document.getElementById("submit_signup").addEventListener('click', event => {
     //on click of the submit button verifies that all conditions are respected
     event.preventDefault();
-    var t1 = Checkform('#name', /^\w[a-zA-Z]/); //format for name can accept composed names
+    var t1 = Checkform('#firstname', /^\w[a-zA-Z]/); //format for name can accept composed names
     var t2 = Checkform('#surname', /^\w[a-zA-Z]/);
     var t3 = CheckUsername();
     var t4 = Checkform('#email', /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/);
