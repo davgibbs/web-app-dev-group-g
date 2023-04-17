@@ -13,6 +13,7 @@ public enum ErrorCode {
     BOOK_NOT_FOUND(HttpStatus.BAD_REQUEST),
     ISBN_NOT_FOUND(HttpStatus.BAD_REQUEST),
     USER_NOT_FOUND(HttpStatus.BAD_REQUEST),
+    BOOK_NOT_AVAIL(HttpStatus.BAD_REQUEST),
 
     USER_UNAUTHORIZED(HttpStatus.UNAUTHORIZED),
 

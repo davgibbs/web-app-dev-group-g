@@ -20,8 +20,10 @@ import jakarta.persistence.Column;
 	  
 	  @Column(name="member_id")
 	  private Integer memberid;
+	  
 	  @Column(name="book_id")
 	  private Integer bookid;
+	  
 	  @JsonFormat(pattern="yyyy-MM-dd")	//Tell Jackson to format the date to only provide date info
 	  private LocalDate borrowed_date;
 	  @JsonFormat(pattern="yyyy-MM-dd")

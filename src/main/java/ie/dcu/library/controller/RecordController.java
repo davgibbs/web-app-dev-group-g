@@ -48,12 +48,18 @@ public class RecordController {
 	  @GetMapping("/borrow/{bookid}") // POST to add to all fields within libraryrecords database
 	  public LibraryRecord add(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "bookid") int bookid){
 
+		  LibraryRecord record = new LibraryRecord();
+
+		  if(recordService.getBookAvailability(id)==false) {
+			  System.out.println("Already taken");
+			  return record;
+		  }
+		  
 	      String token = authorizationHeader.substring(7);
 	      //System.out.println(token);
 	      String email = tokenUtil.getUsernameFromToken(token);
 	      //System.out.println(email);
 	      
-		  LibraryRecord record = new LibraryRecord();
 		  var borrow_date = LocalDate.now();
 	      var due_date = borrow_date.plusWeeks(2);
 	      
