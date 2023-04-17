@@ -44,8 +44,8 @@ public class RecordController {
 	  }
 	  
 	  @CrossOrigin(origins = "*")
-	  @GetMapping("/borrow/{id}") // POST to add to all fields within libraryrecords database
-	  public LibraryRecord add(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "id") int id){
+	  @GetMapping("/borrow/{bookid}") // POST to add to all fields within libraryrecords database
+	  public LibraryRecord add(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "bookid") int bookid){
 
 	      String token = authorizationHeader.substring(7);
 	      //System.out.println(token);
@@ -58,14 +58,13 @@ public class RecordController {
 	      
 	      Long memberid = userService.getId(email);
 	      record.setMemberid(memberid.intValue());
-	      record.setBookId(id);
+	      record.setBookId(bookid);
 	      record.setBorrowed_date(borrow_date);
 	      record.setDue_date(due_date);
+	      record.setIsReturned(false); // Set false as just borrowing book
 	      
 		  recordService.add(record);
-		  Book b = bookService.getBookById(id);
-		  // b.setAvailable(false);
-		  bookService.modifyBook(id, b);
+
 		  return record;
 	  }
 
@@ -94,8 +93,16 @@ public class RecordController {
 	      String email = tokenUtil.getUsernameFromToken(token);
 	      
 	      Long memberid = userService.getId(email);		  
-		  return recordService.getRecordsbyUser(memberid.intValue());
+		  return recordService.getRecordsbyUser(memberid.intValue());		  
+	  }
+	  
+	  //Returns books borrowed by a user
+	  @GetMapping(path="/getrecordsBybook/{bookid}")
+	  public @ResponseBody Iterable<LibraryRecord> getRecordsbyBook(
+			  @RequestHeader (value="Authorization") String authorizationHeader,
+			  @PathVariable(value = "bookid") int bookid){
 		  
+		  return recordService.getRecordsbyBook(bookid);		  
 	  }
 
 //	  @CrossOrigin(origins = "*")

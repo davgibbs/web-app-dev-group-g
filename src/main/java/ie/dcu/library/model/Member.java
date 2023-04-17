@@ -6,7 +6,6 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotNull;
 
-//@Entity // This tells Jakarta JPA to make a table out of this class
 public class Member {
 	@Id
 	private Long id;

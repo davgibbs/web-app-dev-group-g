@@ -18,6 +18,7 @@ public interface RecordsRepository
 	// LibraryRecord findByIsbn(int isbn);
 	LibraryRecord findById(int id);
     List<LibraryRecord> findByMemberid(int memberid);
+    List<LibraryRecord> findByBookid(int bookid);
 
     List<LibraryRecord> findAll();
     void deleteById(int id);    
