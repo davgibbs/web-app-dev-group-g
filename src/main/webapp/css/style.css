@@ -89,7 +89,19 @@ main {
     background: #C8C2B6;
   }
 
+.disable-me {
+    pointer-events: none;
+}
 
+.btnRenew {
+	background-color: purple;
+	color: white;
+}
+
+.btnReturn {
+	background-color: green;
+	color: white;
+}
 /*@media screen and (max-width: 600px) {
   .topnav .search-container {
     float: none;

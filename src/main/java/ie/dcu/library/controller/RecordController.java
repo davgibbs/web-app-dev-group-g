@@ -44,6 +44,7 @@ public class RecordController {
 	  }
 	  
 	  @CrossOrigin(origins = "*")
+	  @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
 	  @GetMapping("/borrow/{bookid}") // POST to add to all fields within libraryrecords database
 	  public LibraryRecord add(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "bookid") int bookid){
 
@@ -104,15 +105,26 @@ public class RecordController {
 		  
 		  return recordService.getRecordsbyBook(bookid);		  
 	  }
-
-//	  @CrossOrigin(origins = "*")
-//	  @PreAuthorize("hasRole('ADMIN')")	  
-//	  @DeleteMapping("/return/{bookid}")
-//	  public void deleterecord(@PathVariable(value = "bookid") int isbn) {              
-//	  //Book b = bookService.getBookByIsbn(isbn);
-//	  // b.setAvailable(true); todo fix
-//	  //var book = bookService.modifyBook(b);	  
-//	  //recordService.deleterecord(book.getISBN());
-//	  }
 	  
+	  @CrossOrigin(origins = "*")
+	  @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+	  @GetMapping("/return/{recordid}") // GET to update libraryrecords database
+	  public LibraryRecord update(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "recordid") int recordid){
+		  LibraryRecord record = recordService.getRecordById(recordid);
+	      record.setIsReturned(true); // Set true as returning book
+	      recordService.save(record);
+		  return record;
+	  }	  
+	  
+	  @CrossOrigin(origins = "*")
+	  @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
+	  @GetMapping("/return/{recordid}") // GET to update libraryrecords database
+	  public LibraryRecord patch(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "recordid") int recordid){
+		  LibraryRecord record = recordService.getRecordById(recordid);
+		  LocalDate now = LocalDate.now();
+		  LocalDate due_date = now.plusWeeks(2);
+	      record.setDue_date(due_date); // Set due date to renew for two weeks
+	      recordService.save(record);
+		  return record;
+	  }	  
 }

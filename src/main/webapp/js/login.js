@@ -1,12 +1,12 @@
 
 function CheckPassword() {
-    //var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    // var check = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
     
-    var check = /^[a-z]{1,10}$/;
+    var check = /^[a-z]{5,10}$/;  // Check for between 5 and 10 characters
     if (document.querySelector('#signup_form').style.display == 'block') {
         var psw = document.getElementById('psw_signup');
     } else {
-        var psw = document.getElementById('psw_login')
+        var psw = document.getElementById('psw_login');
     }
 
     //check if the password has 6-20 characters with one digit, one uppercase and one lowercase letter

@@ -19,6 +19,10 @@ public class RecordService {
     public void add(LibraryRecord record) {
     	recordsRepository.save(record);
     }
+    
+    public void save(LibraryRecord record) {
+    	recordsRepository.save(record);
+    }
  
     public LibraryRecord getRecordById(int id)
     {
