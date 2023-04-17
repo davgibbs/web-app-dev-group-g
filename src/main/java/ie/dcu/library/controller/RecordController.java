@@ -69,7 +69,7 @@ public class RecordController {
 	      record.setBookId(id);
 	      record.setBorrowed_date(borrow_date);
 	      record.setDue_date(due_date);
-	      record.setIsReturned(false);
+	      record.setIsReturned(false); // Set false as just borrowing book
 	      
 		  recordService.add(record);
 		  Book b = bookService.getBookById(id);

@@ -33,10 +33,10 @@ import jakarta.persistence.Id;
 		  
 	  }
 	 
-	  public LibraryRecord(Integer id, Integer memberid, Integer book_id, LocalDate borrowed_date, LocalDate due_date, Boolean is_returned) {
+	  public LibraryRecord(Integer id, Integer memberid, Integer bookid, LocalDate borrowed_date, LocalDate due_date, Boolean is_returned) {
 		  this.id = id;
 		  this.memberid = memberid;
-		  this.bookid = book_id;
+		  this.bookid = bookid;
 		  this.borrowed_date = borrowed_date;
 		  this.due_date = due_date;
 		  this.is_returned = is_returned;
@@ -47,8 +47,8 @@ import jakarta.persistence.Id;
 	    return bookid;
 	  }
 
-	  public void setBookId(Integer book_id) {
-	    this.bookid = book_id;
+	  public void setBookId(Integer bookid) {
+	    this.bookid = bookid;
 	  }
 
 	  public Integer getMemberid() {
