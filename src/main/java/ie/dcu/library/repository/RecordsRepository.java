@@ -12,8 +12,7 @@ import ie.dcu.library.entity.MemberEntity;
 import ie.dcu.library.model.LibraryRecord;
 
 @Repository
-public interface RecordsRepository
-	extends JpaRepository<LibraryRecord, Integer>{
+public interface RecordsRepository extends JpaRepository<LibraryRecord, Integer>{
   
 	// LibraryRecord findByIsbn(int isbn);
 	LibraryRecord findById(int id);
