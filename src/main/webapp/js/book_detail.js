@@ -86,7 +86,7 @@ $(document).ready(function(){
 	  	  
 	  	 borrowBookRequest.fail(function( data ) {
 			 console.log(data)
-			 alert("Issue occured borrowing book ID: " + bookId)
+			 alert("Issue occured borrowing book ID: " + bookId + ".\n\n Are you currently logged in?" )
 	  	  })
 
 	})

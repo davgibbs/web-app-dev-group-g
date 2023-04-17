@@ -50,7 +50,7 @@ public class RecordController {
 
 		  LibraryRecord record = new LibraryRecord();
 
-		  if(recordService.getBookAvailability(id)==false) {
+		  if(recordService.getBookAvailability(bookid)==false) {
 			  System.out.println("Already taken");
 			  return record;
 		  }
