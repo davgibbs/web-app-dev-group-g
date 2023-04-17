@@ -29,6 +29,17 @@ public class RecordService {
       return recordsRepository.findAll();
     }
 
+    public Boolean getBookAvailability(int bookid) {
+    	Iterable<LibraryRecord> records = recordsRepository.findByBookid(bookid);
+    	
+    	for(LibraryRecord rec : records) {
+    	 if(rec.getIsReturned()==false) {
+    		return false;
+    	 }
+    	}    		    
+    	return true;
+      }
+
     public Iterable<LibraryRecord> getRecordsbyUser(int memberid){
         return recordsRepository.findByMemberid(memberid);
     }

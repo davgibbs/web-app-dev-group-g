@@ -49,12 +49,18 @@ public class RecordController {
 			  @RequestHeader (value="Authorization") String authorizationHeader,
 			  @PathVariable(value = "id") int id){
 
+		  LibraryRecord record = new LibraryRecord();
+
+		  if(recordService.getBookAvailability(id)==false) {
+			  System.out.println("Already taken");
+			  return record;
+		  }
+		  
 	      String token = authorizationHeader.substring(7);
 	      //System.out.println(token);
 	      String email = tokenUtil.getUsernameFromToken(token);
 	      //System.out.println(email);
 	      
-		  LibraryRecord record = new LibraryRecord();
 		  var borrow_date = LocalDate.now();
 	      var due_date = borrow_date.plusWeeks(2);
 	      
@@ -63,6 +69,7 @@ public class RecordController {
 	      record.setBookId(id);
 	      record.setBorrowed_date(borrow_date);
 	      record.setDue_date(due_date);
+	      record.setIsReturned(false);
 	      
 		  recordService.add(record);
 		  Book b = bookService.getBookById(id);

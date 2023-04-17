@@ -19,7 +19,10 @@ import jakarta.persistence.Id;
 	  
 	  @Column(name="member_id")
 	  private Integer memberid;
-	  private Integer book_id;
+	  
+	  @Column(name="book_id")
+	  private Integer bookid;
+	  
 	  @JsonFormat(pattern="yyyy-MM-dd")	//Tell Jackson to format the date to only provide date info
 	  private LocalDate borrowed_date;
 	  @JsonFormat(pattern="yyyy-MM-dd")
@@ -33,7 +36,7 @@ import jakarta.persistence.Id;
 	  public LibraryRecord(Integer id, Integer memberid, Integer book_id, LocalDate borrowed_date, LocalDate due_date, Boolean is_returned) {
 		  this.id = id;
 		  this.memberid = memberid;
-		  this.book_id = book_id;
+		  this.bookid = book_id;
 		  this.borrowed_date = borrowed_date;
 		  this.due_date = due_date;
 		  this.is_returned = is_returned;
@@ -41,11 +44,11 @@ import jakarta.persistence.Id;
 
 	  //Getters and Setters	  
 	  public Integer getBookId() {
-	    return book_id;
+	    return bookid;
 	  }
 
 	  public void setBookId(Integer book_id) {
-	    this.book_id = book_id;
+	    this.bookid = book_id;
 	  }
 
 	  public Integer getMemberid() {
