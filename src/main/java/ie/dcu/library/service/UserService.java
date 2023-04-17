@@ -61,7 +61,7 @@ public class UserService implements UserDetailsService {
     }
 
     @Transactional
-    public Member signUpUser(String username, String email, String password) {
+    public Member signUpUser(String username, String email, String firstname, String surname, String password) {
         userEntityRepository.findMemberEntityByUsername(username).ifPresent(u -> {
             throw new LibraryServiceException("Username taken", ErrorCode.USER_ALREADY_EXISTS);
         });
@@ -73,6 +73,8 @@ public class UserService implements UserDetailsService {
         user.setPassword(password);
         user.setUsername(username);
         user.setEmail(email);
+        user.setFirstname(firstname);
+        user.setSurname(surname);
         user.addRole(roleService.findRoleByRolename(RoleName.USER));
         MemberEntity created = userEntityRepository.save(user);
         return mapper.entityToDto(created);

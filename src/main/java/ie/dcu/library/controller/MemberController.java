@@ -53,7 +53,6 @@ public class MemberController {
 	  @CrossOrigin(origins = "*")
 	  @GetMapping("/getmember") 
 	  public Member getMember(@RequestHeader (value="Authorization") String authorizationHeader){
-		  System.out.println("Woo");
 	    String token = authorizationHeader.substring(7);
 	    String email = tokenUtil.getUsernameFromToken(token);  
 	    Long memberid = userService.getId(email);
