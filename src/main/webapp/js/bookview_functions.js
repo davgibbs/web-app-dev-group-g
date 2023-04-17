@@ -21,9 +21,7 @@ $(document).ready(function(){
 	    })
 	    .catch(error => console.log('error', error));
 	 
-	$("#update-delete-book").submit(function(event) {
-		//debugger todo
-		
+	$("#deleteBook").click(function(event) {		
        	console.log("Handler for .submit() called delete book.");
         event.preventDefault(); 
     	var delURL = "./library/deletebook/" + iDvalue; // string concatenation with id val
@@ -32,7 +30,43 @@ $(document).ready(function(){
 		  // use ajax command to delete book
 		 var deleting = $.ajax({
 	         type: 'delete',
-	         url: url,
+	         url: delURL,
+	         contentType: "application/json; charset=utf-8",
+	         beforeSend: function (xhr){ 
+	        	xhr.setRequestHeader('Authorization', 'Bearer ' + jwtBearerToken); 
+	    	 },
+	     });
+	
+		deleting.done(function( data ) {
+		  alert("Successfully deleted book");
+		  window.location.href = "./admin.html"	  
+		})
+		  
+		deleting.fail(function( data ) {
+		  console.log(data)
+		  alert("Failed to delete book");
+		  window.location.href = "./admin.html"
+		})
+	})
+	
+    $("#updateBook").click(function(event) {
+       	console.log("Handler for .submit() called update book.");
+        event.preventDefault(); 
+    	var updateURL = "./library/modifybook/" + iDvalue; // string concatenation with id val
+    	
+    	var raw = JSON.stringify({ // create book
+	        "publish_date": document.getElementById('date_publish').value,
+	        "author": document.getElementById('author').value,
+	        "description": document.getElementById('description').value,
+	        "isbn": document.getElementById('isbn').value,
+	        "title": document.getElementById('title').value
+	    });
+	    // Get token from main.js
+	    const jwtBearerToken = getToken();
+		  // use ajax command to delete book
+		 var putting = $.ajax({
+	         type: 'PUT',
+	         url: updateURL,
 	         data: raw,
 	         contentType: "application/json; charset=utf-8",
 	         beforeSend: function (xhr){ 
@@ -40,14 +74,14 @@ $(document).ready(function(){
 	    	 },
 	     });
 	
-		posting.done(function( data ) {
-		  alert("Successfully deleted book");
+		putting.done(function( data ) {
+		  alert("Successfully updated book");
 		  window.location.href = "./admin.html"	  
 		})
 		  
-		posting.fail(function( data ) {
+		putting.fail(function( data ) {
 		  console.log(data)
-		  alert("Failed to delete book");
+		  alert("Failed to update book");
 		  window.location.href = "./admin.html"
 		})
 	})

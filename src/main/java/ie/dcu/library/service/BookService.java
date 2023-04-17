@@ -55,42 +55,31 @@ public class BookService {
 		return newbook;
 	}
 
-	public void deleteBook(int isbn){
-		boolean exists = libraryRepository.existsByIsbn(isbn);
+	public void deleteBook(int id){
+		boolean exists = libraryRepository.existsById(id);
 		if(!exists) {
 			throw new LibraryServiceException("Book not found", BOOK_NOT_FOUND);
 		}
-		Book b = libraryRepository.findByIsbn(isbn);
+		Book b = libraryRepository.findById(id);
 		libraryRepository.deleteById(b.getId());
 	}
 
 	@Transactional
-	public Book modifyBook(Book book){
-		//System.out.print(id);
-        var bookEntity = libraryRepository.findById(book.getId()).orElseThrow(
-                () -> new LibraryServiceException("Book not found", BOOK_NOT_FOUND));
+	public Book modifyBook(int id, Book book){
+		boolean exists = libraryRepository.existsById(id);
+		if(!exists) {
+			throw new LibraryServiceException("Book not found", BOOK_NOT_FOUND);
+		}
+        var bookEntity = libraryRepository.findById(id);
         
-        /*
-        if(book.getTitle()!=null &&
-        		book.getTitle().length()>0 &&
-        		!Objects.equals(book.getTitle(),bookEntity.getTitle())) {
-            bookEntity.setTitle(book.getTitle());        	
-        }
-
-        if(book.getAuthor()!=null &&
-        		book.getAuthor().length()>0 &&
-        		!Objects.equals(book.getAuthor(),bookEntity.getAuthor())) {
-            bookEntity.setAuthor(book.getAuthor());        	
-        }*/
-
         bookEntity.setTitle(book.getTitle());        	
         bookEntity.setAuthor(book.getAuthor());
         bookEntity.setDescription(book.getDescription());
         bookEntity.setPublish_date(book.getPublish_date());
         bookEntity.setImage_path(book.getImage_path());
+        bookEntity.setISBN(book.getISBN());
         libraryRepository.save(bookEntity);
-        return bookEntity;        
-        
+        return bookEntity;
 	}
 	
 	  public Book getBookByIsbn(int isbn)

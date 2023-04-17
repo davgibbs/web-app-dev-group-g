@@ -1,6 +1,5 @@
 /* When the document is ready then add watchers for different events */
 $(document).ready(function(){
-	
 
   /* Watch for a submit event for the main registration form */
   $("#form-new-book").submit(function(event) {
