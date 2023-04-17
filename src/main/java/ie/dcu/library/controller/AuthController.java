@@ -29,7 +29,6 @@ import java.util.stream.Collectors;
 @CrossOrigin("*")
 public class AuthController {
     private final UserService userService;
-
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authenticationManager;
     private final JwtTokenUtil jwtTokenUtil;
@@ -47,6 +46,8 @@ public class AuthController {
         userService.signUpUser(
                 signUpRequest.getUsername(),
                 signUpRequest.getEmail(),
+                signUpRequest.getFirstname(),
+                signUpRequest.getSurname(),                
                 passwordEncoder.encode(signUpRequest.getPassword()));
         return ResponseEntity.ok().build();
     }

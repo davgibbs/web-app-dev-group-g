@@ -118,8 +118,8 @@ public class RecordController {
 	  
 	  @CrossOrigin(origins = "*")
 	  @PreAuthorize("hasAnyRole('USER', 'ADMIN')")
-	  @GetMapping("/return/{recordid}") // GET to update libraryrecords database
-	  public LibraryRecord patch(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "recordid") int recordid){
+	  @GetMapping("/renew/{recordid}") // GET to update libraryrecords database
+	  public LibraryRecord updateByDueDate(@RequestHeader (value="Authorization") String authorizationHeader, @PathVariable(value = "recordid") int recordid){
 		  LibraryRecord record = recordService.getRecordById(recordid);
 		  LocalDate now = LocalDate.now();
 		  LocalDate due_date = now.plusWeeks(2);
