@@ -26,4 +26,19 @@ Library records keep track of which user has a certain book at a certain time by
 Sign up is available for new users who wish to join the library.<br>
 
 
+## Screenshots
+Home:<br>
+<img src="src/main/webapp/images/home.png" height="70%">
+
+Login:<br>
+<img src="src/main/webapp/images/login.png" height="70%">
+
+Borrow book:<br>
+<img src="src/main/webapp/images/borrow-book.png" height="70%">
+
+Account:<br>
+<img src="src/main/webapp/images/account.png" height="70%">
+
+Admin:<br>
+<img src="src/main/webapp/images/admin.png" height="70%">
 
