@@ -23,7 +23,7 @@ $(document).ready(function(){
 		 $('#book-description').text(data.description);
 		 $('#book-image').attr("src", data.image_path);
 		 $('#author').text("By " + data.author);
-		 $('#date-published').text("Published " + data.publish_date.slice(0, 3));  // Get Year only
+		 $('#date-published').text("Published " + data.publish_date.slice(0, 4));  // Get Year only
 		 
 		 // Check whether it is available using records
 		 const url = "./library/getrecordsBybook/" + bookId;
